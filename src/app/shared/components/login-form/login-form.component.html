@@ -1,3 +1,5 @@
-<p>
-  login-form works!
-</p>
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onLogin()">
+    <ion-input labelPlacement="stacked" label="Email" formControlName="email" type="text"></ion-input>
+    <ion-input labelPlacement="stacked" label="Password" formControlName="password" type="password"></ion-input>
+    <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onLogin()" type="submit">Login</ion-button>
+</form>

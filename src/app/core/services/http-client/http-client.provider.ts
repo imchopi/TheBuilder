@@ -1,70 +1,70 @@
+// angular
 import { Injectable } from '@angular/core';
+
+// rxjs
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export abstract class HttpClientProvider {
-  constructor() {}
-
   /**
-   * Obtains an image from a given URL.
+   * getImage
    *
-   * @param url The URL from which to obtain the image.
-   * @returns An Observable that emits a Blob object containing the binary data of the image.
+   * @param url http request url
+   * @param options http request options
+   * @returns observable with http response
    */
   public abstract getImage(url: string): Observable<Blob>;
 
   /**
-   * Performs an HTTP GET request.
+   * get
    *
-   * @param url The URL to send the GET request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param params http request params
+   * @param headers http request headers
+   * @returns observable with http response
    */
   public abstract get<T>(url: string, params: any, headers: any): Observable<T>;
 
   /**
-   * Performs an HTTP POST request.
+   * post
    *
-   * @param url The URL to send the POST request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
   public abstract post<T>(
     url: string,
-    params: any,
+    body: any,
     headers: any,
     urlEncoded?: boolean
   ): Observable<T>;
 
   /**
-   * Performs an HTTP PUT request.
+   * put
    *
-   * @param url The URL to send the PUT request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
   public abstract put<T>(
     url: string,
-    params: any,
+    body: any,
     headers: any,
     urlEncoded?: boolean
   ): Observable<T>;
 
   /**
-   * Performs an HTTP PATCH request.
+   * patch
    *
-   * @param url The URL to send the PATCH request to.
-   * @param body The request body to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
   public abstract patch<T>(
     url: string,
@@ -74,25 +74,23 @@ export abstract class HttpClientProvider {
   ): Observable<T>;
 
   /**
-   * Performs an HTTP DELETE request.
+   * delete
    *
-   * @param url The URL to send the DELETE request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param params http request params
+   * @param headers http request headers
+   * @returns observable with http response
    */
   public abstract delete<T>(
     url: string,
     params: any,
     headers: any
   ): Observable<T>;
-  
-  /**
-   * Sets the server trust mode for HTTP requests.
-   *
-   * @param mode The server trust mode to set ('default', 'nocheck', 'pinned', 'legacy').
-   */
 
+  /**
+   * Sets the trust mode for the server
+   * @param mode server trust mode
+   */
   public abstract setServerTrustMode(
     mode: 'default' | 'nocheck' | 'pinned' | 'legacy'
   ): void;

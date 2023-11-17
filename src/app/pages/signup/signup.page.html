@@ -1,0 +1,23 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card>
+
+      <ion-card-header>
+        <div class="logo">
+          <ion-thumbnail>
+            <img alt="logo of tasks" src="../../../assets/shapes.svg" />
+          </ion-thumbnail>
+          <ion-text>Tasks</ion-text>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <app-register (register)="register($event)"></app-register>
+        <div class="ion-text-end">
+          <ion-button fill="clear" style="text-transform: none;" (click)="navigateLogin()">Go to Login</ion-button>
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+</ion-content>

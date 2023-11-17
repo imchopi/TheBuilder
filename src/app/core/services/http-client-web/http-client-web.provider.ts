@@ -1,38 +1,49 @@
-import { Injectable } from '@angular/core';
-import { HttpClientProvider } from '../http-client/http-client.provider';
-import { Observable } from 'rxjs';
+// angular
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+// rxjs
+import { Observable } from 'rxjs';
+import { HttpClientProvider } from '../http-client/http-client.provider';
+
+// providers
+
+@Injectable({ providedIn: 'root' })
 export class HttpClientWebProvider extends HttpClientProvider {
+  /**
+   * provider constructor
+   *
+   * @param httpClient angular http client
+   */
   constructor(private readonly httpClient: HttpClient) {
     super();
   }
 
   /**
-   * Overrides the base class method to fetch an image from the specified URL.
+   * getImage
    *
-   * @param url The URL from which to fetch the image.
-   * @returns An Observable that emits a Blob object representing the image.
+   * @param url http request url
+   * @param options http request options
+   * @returns observable with http response
    */
-  public override getImage(url: string): Observable<Blob> {
-    return this.httpClient.get(url, { responseType: 'blob' });
+  public getImage(url: string): Observable<Blob> {
+    return this.httpClient.get(url, {
+      responseType: 'blob',
+    });
   }
 
   /**
-   * Overrides the base class method to perform an HTTP GET request.
+   * get
    *
-   * @param url The URL to send the GET request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param params http request params
+   * @param headers http request headers
+   * @returns observable with http response
    */
-  public override get<T>(
+  public get<T>(
     url: string,
-    params: any,
-    headers: any
+    params: any = {},
+    headers: any = {}
   ): Observable<T> {
     return this.httpClient.get<T>(url, {
       params: new HttpParams({ fromObject: params }),
@@ -41,15 +52,15 @@ export class HttpClientWebProvider extends HttpClientProvider {
   }
 
   /**
-   * Overrides the base class method to perform an HTTP POST request.
+   * post
    *
-   * @param url The URL to send the POST request to.
-   * @param body The request body.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
-  public override post<T>(
+  public post<T>(
     url: string,
     body: any = {},
     headers: any = {},
@@ -61,15 +72,15 @@ export class HttpClientWebProvider extends HttpClientProvider {
   }
 
   /**
-   * Overrides the base class method to perform an HTTP PUT request.
+   * put
    *
-   * @param url The URL to send the PUT request to.
-   * @param body The request body.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
-  public override put<T>(
+  public put<T>(
     url: string,
     body: any = {},
     headers: any = {},
@@ -81,40 +92,41 @@ export class HttpClientWebProvider extends HttpClientProvider {
   }
 
   /**
-   * Overrides the base class method to perform an HTTP PATCH request.
+   * patch
    *
-   * @param url The URL to send the PATCH request to.
-   * @param body The request body.
-   * @param headers HTTP headers to include in the request.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param body http request body
+   * @param headers http request headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns observable with http response
    */
-  public override patch<T>(
+  public patch<T>(
     url: string,
-    body: any,
-    headers: any,
+    body: any = {},
+    headers: any = {},
     urlEncoded: boolean = false
   ): Observable<T> {
     if (body instanceof FormData) {
       return this.httpClient.patch<T>(url, body, { headers: headers });
+    } else {
+      return this.httpClient.patch<T>(url, this.createBody(body, urlEncoded), {
+        headers: this.createHeaders(headers, urlEncoded),
+      });
     }
-    return this.httpClient.patch<T>(url, this.createBody(body, urlEncoded), {
-      headers: this.createHeaders(headers, urlEncoded),
-    });
   }
 
   /**
-   * Overrides the base class method to perform an HTTP DELETE request.
+   * delete
    *
-   * @param url The URL to send the DELETE request to.
-   * @param params Parameters to include in the request.
-   * @param headers HTTP headers to include in the request.
-   * @returns An Observable that emits the response data of type T.
+   * @param url http request url
+   * @param params http request params
+   * @param headers http request headers
+   * @returns observable with http response
    */
-  public override delete<T>(
+  public delete<T>(
     url: string,
-    params: any,
-    headers: any
+    params: any = {},
+    headers: any = {}
   ): Observable<T> {
     return this.httpClient.delete<T>(url, {
       params: new HttpParams({ fromObject: params }),
@@ -123,38 +135,37 @@ export class HttpClientWebProvider extends HttpClientProvider {
   }
 
   /**
-   * Overrides the base class method to set the server trust mode for HTTP requests.
+   * Sets the trust mode for the server
    *
-   * @param mode The server trust mode to set ('default', 'nocheck', 'pinned', 'legacy').
+   * @param mode server trust mode
    */
-  public override setServerTrustMode(
+  public setServerTrustMode(
     mode: 'default' | 'nocheck' | 'pinned' | 'legacy'
   ): void {}
 
   /**
-   * Creates and returns HTTP headers based on the provided body and URL-encoded flag.
+   * create http headers
    *
-   * @param body The request body or parameters.
-   * @param urlEncoded Whether to encode the request in URL-encoded format (optional).
-   * @returns HttpHeaders or HttpParams based on the URL-encoded flag.
+   * @param headers http headers
+   * @param urlEncoded http request as url encoded content-type
+   * @returns angular http headers
    */
   private createHeaders(
     headers: any,
     urlEncoded: boolean = false
   ): HttpHeaders {
     var _headers = new HttpHeaders(headers);
-    if (urlEncoded) {
+    if (urlEncoded)
       _headers.set('Accept', ' application/x-www-form-urlencoded');
-    }
     return _headers;
   }
 
   /**
-   * Creates and returns the request body based on the provided body and URL-encoded flag.
+   * create http request body
    *
-   * @param body The request body or parameters.
-   * @param urlEncoded Whether to encode the request in URL-encoded format.
-   * @returns The request body as HttpParams or the original body.
+   * @param body http request body
+   * @param urlEncoded http request as url encoded content-type
+   * @returns http request body
    */
   private createBody(body: any, urlEncoded: boolean): any | HttpParams {
     return urlEncoded ? new HttpParams({ fromObject: body }) : body;

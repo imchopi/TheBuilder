@@ -1,0 +1,8 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onRegister()">
+  <ion-input labelPlacement="stacked" label="Username" formControlName="username" type="text"></ion-input>
+  <ion-input labelPlacement="stacked" label="Name" formControlName="name" type="text"></ion-input>
+  <ion-input labelPlacement="stacked" label="Surname" formControlName="surname" type="text"></ion-input>
+  <ion-input labelPlacement="stacked" label="Email" formControlName="email" type="email"></ion-input>
+  <ion-input labelPlacement="stacked" label="Password" formControlName="password" type="password"></ion-input>
+  <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onRegister()" type="submit">Sing up</ion-button>
+</form>

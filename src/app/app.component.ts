@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(private auth: AuthService, private router: Router) {
+    this.auth.isLogged$.subscribe((logged) => {
+      console.log("llamadas de logged");
+      if (logged) {
+        console.log(logged);
+        this.router.navigate(['/home']);
+      } else {
+        console.log(logged);
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 }
