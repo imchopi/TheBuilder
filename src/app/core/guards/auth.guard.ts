@@ -14,12 +14,10 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> {
+  canActivate(): Observable<boolean | UrlTree> {
     return this.auth.isLogged$.pipe(
       tap((logged) => {
+        console.log('Me fui' + logged);
         if (!logged) this.router.navigate(['/login']);
       })
     );

@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+      <ion-label slot="end">
+        <p class="nickname">
+          {{nickname}}
+        </p>
+      </ion-label>
+    <ion-buttons slot="end">
+      <ion-button id="language" color="primary">
+        {{languageSelected | uppercase}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-popover trigger="language" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [disabled]="language == languageSelected" *ngFor="let language of languages" [button]="true" (click)="setLanguage(language)">
+            {{language | uppercase}}
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+    </ion-popover>  
+</ion-header>
+
+<ion-menu contentId="main-content" swipeGesture="false" type="overlay">
+  <p>
+    Current Page: {{ currentPage }}
+  </p>
+  <div class="cont">
+    <ion-button color="warning" class="button-menu" (click)="login()" *ngIf="currentPage === 'signup' || currentPage === 'login'" [ngClass]="{'active-button': currentPage === 'login'}" fill="clear">
+      <p>
+        Login
+      </p>
+    </ion-button>
+    <ion-button class="button-menu" (click)="signUp()" *ngIf="currentPage === 'signup' || currentPage === 'login'" [ngClass]="{'active-button': currentPage === 'signup'}" fill="clear">
+      <p>
+        {{'login.signup' | translate}}
+      </p>
+    </ion-button>
+    <ion-button color="warning" class="button-menu" (click)="home()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'home'}" fill="clear">
+      <p>
+        Home
+      </p>
+    </ion-button>
+    <ion-button 
+    class="button-menu" (click)="about()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'about'}"  fill="clear">
+      <p>
+        About
+      </p>
+    </ion-button>
+    <ion-button class="button-menu" (click)="build()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'build'}" fill="clear">
+      <p>
+        Builds
+      </p>
+    </ion-button>
+    <ion-button class="button-menu" (click)="item()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'item'}" fill="clear">
+      <p>
+        Items
+      </p>
+    </ion-button>
+    <ion-button class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'item'}" fill="clear">
+      <p>
+        Logout
+      </p>
+    </ion-button>
+  </div>
+</ion-menu>

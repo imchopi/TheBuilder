@@ -10,9 +10,4 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class HomePage {
   constructor(private auth: AuthService, private router: Router) {}
-
-  onLogout() {
-    this.auth.logout()
-    this.router.navigate(['/login'])
-  }
 }

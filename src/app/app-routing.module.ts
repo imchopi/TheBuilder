@@ -24,6 +24,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
   },
+  {
+    path: 'build-info',
+    loadChildren: () => import('./pages/build-info/build-info.module').then( m => m.BuildInfoPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'item',
+    loadChildren: () => import('./pages/item/item.module').then( m => m.ItemPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

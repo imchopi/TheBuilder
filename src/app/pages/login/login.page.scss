@@ -1,32 +1,83 @@
-ion-content{
-    min-height: 100vh;
-    position: relative;
-}
-.container{
-    min-height:0;
-    margin:0 auto;
+/* Estilos comunes para el contenedor y la tarjeta */
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .custom-form {
+    max-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: auto;
+  }
+  
+  /* Estilos comunes para el encabezado */
+  .custom-form ion-card-header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Estilos comunes para el logotipo y el texto del encabezado */
+  .logo {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .logo ion-thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .logo ion-text {
+    font-size: 1.5em;
+    margin-top: 8px;
+  }
+  
+  /* Estilos comunes para el contenido de la tarjeta */
+  .custom-form ion-card-content {
+    padding: 16px;
+  }
+  
+  /* Estilos para el formulario interno (app-login-form y app-register) */
+  app-login-form,
+  app-register {
+    /* Agrega estilos específicos para tus formularios aquí */
+  }
+  
+  /* Estilos comunes para el botón de navegación */
+  .ion-text-end ion-button {
+    fill: clear;
+    text-transform: none;
+  }
+  
+  /* Estilos para la columna derecha con la imagen */
+  .image-column {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    ion-card{
-        box-shadow:none;
-        border:1px solid var(--ion-color-medium);
-        border-radius:8px;
-        width:auto;
-        min-height:500px;
-        overflow-y:auto;
-        height:auto;
-        padding:24px 20px 18px;
-        min-width:350px;
+    background-color: #3498db;
+  }
+  
+  /* Estilos para la imagen */
+  .image-column img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  /* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas más pequeñas */
     }
-}
-
-.logo{
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
-    font-size:1.2rem;
-    color:var(--ion-color-dark);
-}
+    
+    .custom-form {
+      max-width: none; /* Elimina el ancho máximo para ocupar todo el ancho en pantallas más pequeñas */
+    }
+  }

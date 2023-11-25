@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   form: FormGroup | null = null;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private _router: Router) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -24,5 +25,9 @@ export class LoginFormComponent implements OnInit {
 
   onLogin() {
     this.login.emit(this.form?.value);
+  }
+  
+  navigateRegister() {
+    this._router.navigate(['/signup']);
   }
 }

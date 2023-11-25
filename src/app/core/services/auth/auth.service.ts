@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export abstract class AuthService {
+
+  constructor(){
+  }
+
+  private redirectUrl: string = '';
+
   protected _logged = new BehaviorSubject<boolean>(false);
   public isLogged$ = this._logged.asObservable();
 
@@ -15,4 +22,5 @@ export abstract class AuthService {
   public abstract logout(): void;
 
   public abstract me(): Observable<any>;
+
 }

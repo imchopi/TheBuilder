@@ -85,6 +85,7 @@ export class AuthStrapiService extends AuthService {
           await lastValueFrom(
             this.apiSvc.post('/extender-users', _extended_user)
           );
+          console.log(data);
           obs.next();
           obs.complete();
         },

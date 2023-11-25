@@ -17,15 +17,11 @@ export class LoginPage implements OnInit {
   login(credentials: UserCredentials) {
     this.auth.login(credentials).subscribe({
       next: (data) => {
-        this.router.navigate(['home']);
+        this.router.navigate(['/home'])
       },
       error: (err) => {
         console.log(err);
       },
     });
-  }
-
-  navigateRegister() {
-    this.router.navigate(['/signup']);
   }
 }

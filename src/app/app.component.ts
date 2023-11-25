@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
-  constructor(private auth: AuthService, private router: Router) {
-    this.auth.isLogged$.subscribe((logged) => {
-      console.log("llamadas de logged");
+  constructor(private _auth: AuthService, private _router: Router) {
+    this._auth.isLogged$.subscribe((logged) => {
+      console.log('llamadas de logged');
       if (logged) {
         console.log(logged);
-        this.router.navigate(['/home']);
+        this._router.navigate(['/home']);
       } else {
         console.log(logged);
-        this.router.navigate(['/login']);
+        this._router.navigate(['/login']);
       }
     });
   }
