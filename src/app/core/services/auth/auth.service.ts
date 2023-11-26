@@ -10,7 +10,6 @@ export abstract class AuthService {
   constructor(){
   }
 
-  private redirectUrl: string = '';
 
   protected _logged = new BehaviorSubject<boolean>(false);
   public isLogged$ = this._logged.asObservable();

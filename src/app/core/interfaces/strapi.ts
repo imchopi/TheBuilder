@@ -26,10 +26,22 @@ export interface StrapiRegisterResponse {
 }
 
 export interface StrapiExtendedUser {
-  data: {
+  data: {  
     users: number;
-    builds?: number;
+    name: string;
+    surname: string;
+    build_info?: number;
+  }
+}
+
+interface UserData {
+  users: number;
+  attributes: {
     name: string;
     surname: string;
   };
+}
+
+export interface ApiResponse {
+  data: UserData[];
 }

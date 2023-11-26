@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
@@ -10,12 +12,15 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  @Input() username: string = 'Adrián P. Fernández';
-  @Input() nickname: string = 'Chopito';
+
+  @Input() nickname: User | string = 'Chopito';
   @Input() languages: string[] = ['es', 'en'];
   @Input() languageSelected: string = 'es';
 
   currentPage: string = 'login';
+
+  private _user = new BehaviorSubject<User | null>(null);
+  public user$ = this._user.asObservable()
 
   constructor(
     private _menu: MenuController,
@@ -31,44 +36,47 @@ export class MenuComponent implements OnInit {
         this._menu.close();
       }
     });
+    this._auth.me().subscribe({
+      next: (user) => {
+        this._user.next(user);
+      },
+      error: (err) => {
+        console.error('Error componente:', err);
+      },
+    });
     this._lang.use('es')
   }
 
+  navigateToPage(page: string) {
+    this.currentPage = page;
+    this._router.navigate([page]);
+    this._menu.close();
+  }
+  
   about() {
-    this.currentPage = 'about';
-    this._router.navigate(['about']);
-    this._menu.close();
+    this.navigateToPage('about');
   }
-
+  
   home() {
-    this.currentPage = 'home';
-    this._router.navigate(['home']);
-    this._menu.close();
+    this.navigateToPage('home');
   }
-
+  
   build() {
-    this.currentPage = 'build-info';
-    this._router.navigate(['build-info']);
-    this._menu.close();
+    this.navigateToPage('build-info');
   }
-
+  
   item() {
-    this.currentPage = 'item';
-    this._router.navigate(['item']);
-    this._menu.close();
+    this.navigateToPage('item');
   }
-
+  
   login() {
-    this.currentPage = 'login';
-    this._router.navigate(['/login']);
-    this._menu.close();
+    this.navigateToPage('login');
   }
-
+  
   signUp() {
-    this.currentPage = 'signup';
-    this._router.navigate(['signup']);
-    this._menu.close();
+    this.navigateToPage('signup');
   }
+  
 
   logout() {
     this._auth.logout();

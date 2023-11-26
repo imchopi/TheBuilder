@@ -15,7 +15,9 @@ export class CustomTranslateService {
   private _language: BehaviorSubject<string> = new BehaviorSubject<string>('es');
   public language$ = this._language.asObservable();
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    ) {
     this.init();
   }
 

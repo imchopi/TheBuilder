@@ -1,0 +1,19 @@
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .flex-button {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+      ion-button {
+        width: 400px;
+        min-height: 150px;
+        margin: 5px;
+      }
+  }

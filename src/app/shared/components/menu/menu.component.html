@@ -5,7 +5,7 @@
     </ion-buttons>
       <ion-label slot="end">
         <p class="nickname">
-          {{nickname}}
+          {{ (user$ | async)?.name }}
         </p>
       </ion-label>
     <ion-buttons slot="end">
@@ -14,7 +14,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-popover trigger="language" [dismissOnSelect]="true">
+  <ion-popover trigger="language" triggeraction="click" [dismissOnSelect]="true">
     <ng-template>
       <ion-content>
         <ion-list>

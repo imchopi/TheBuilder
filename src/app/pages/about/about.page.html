@@ -1,7 +1,9 @@
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">about</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="container">
+    <div class="flex-button">
+      <ion-button [routerLink]="'/build-info'">Builds</ion-button>
+      <ion-button [routerLink]="'/item'">Items</ion-button>
+      <ion-button [routerLink]="'/about'">About</ion-button>
+    </div>
+  </div>
 </ion-content>

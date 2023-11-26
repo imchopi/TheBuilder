@@ -11,10 +11,9 @@ import { JwtService } from './core/services/jwt/jwt.service';
 import { ApiService } from './core/services/api/api.service';
 import { AuthStrapiService } from './core/services/auth-strapi/auth-strapi.service';
 import { HttpClientWebProvider } from './core/services/http-client-web/http-client-web.provider';
-import { MenuComponent } from './shared/components/menu/menu.component';
-import { SharedModule } from './shared/shared.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslateLoader } from './core/services/translate/custom-translate.service';
+import { SharedModule } from './shared/shared.module';
 
 
 export function httpProviderFactory(http: HttpClient) {

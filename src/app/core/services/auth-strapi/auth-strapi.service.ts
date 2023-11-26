@@ -4,6 +4,7 @@ import { AuthService } from '../auth/auth.service';
 import { JwtService } from '../jwt/jwt.service';
 import { Observable, lastValueFrom, map } from 'rxjs';
 import {
+  ApiResponse,
   StrapiExtendedUser,
   StrapiLoginPayload,
   StrapiLoginResponse,
@@ -63,7 +64,6 @@ export class AuthStrapiService extends AuthService {
   }
 
   register(info: UserRegisterInfo): Observable<void> {
-    console.log('Register');
     return new Observable<void>((obs) => {
       const _info: StrapiRegisterPayload = {
         email: info.email,
@@ -80,12 +80,11 @@ export class AuthStrapiService extends AuthService {
               users: data.user.id,
               name: info.name,
               surname: info.surname,
-            },
+            }
           };
           await lastValueFrom(
             this.apiSvc.post('/extender-users', _extended_user)
           );
-          console.log(data);
           obs.next();
           obs.complete();
         },
@@ -97,19 +96,19 @@ export class AuthStrapiService extends AuthService {
   }
 
   public me(): Observable<User> {
-    console.log('Me');
     return new Observable<User>((obs) => {
+      console.log("AAAAAAAAAAAAAAA");
       this.apiSvc.get('/users/me').subscribe({
         next: async (user: StrapiUser) => {
-          let extended_user = await lastValueFrom(
-            this.apiSvc.get(`/extender-users?filters[user_id]=${user.id}`)
+          let extended_user: ApiResponse = await lastValueFrom(
+            this.apiSvc.get(`/extender-users?filters[users]=${user.id}`)
           );
           let ret: User = {
             id: user.id,
-            name: extended_user.name,
-            surname: extended_user.surname,
-            age: 0,
+            name: extended_user.data[0].attributes.name,
+            surname: extended_user.data[0].attributes.surname,
           };
+          console.log(ret);
           obs.next(ret);
           obs.complete();
         },

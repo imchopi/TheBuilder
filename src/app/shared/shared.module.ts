@@ -9,9 +9,11 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from '../core/services/translate/custom-translate.service';
+import { BuildInfoComponent } from './components/build-info/build.component';
 
 @NgModule({
   declarations: [
+    BuildInfoComponent,
     MenuComponent,
     LoginFormComponent,
     RegisterComponent
@@ -31,12 +33,13 @@ import { createTranslateLoader } from '../core/services/translate/custom-transla
       }),
   ],
   exports: [
+    BuildInfoComponent,
     MenuComponent,
+    LoginFormComponent,
+    RegisterComponent,
     CommonModule,
     IonicModule,
     FormsModule,
-    LoginFormComponent,
-    RegisterComponent
   ],
 })
 export class SharedModule {}
