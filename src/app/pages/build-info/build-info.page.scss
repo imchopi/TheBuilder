@@ -7,6 +7,18 @@
     transform: translateY(-50%);
   }
 
-  ion-card{
-    margin-top: 70px;
+  ion-card {
+    max-width: 100%;
+    margin-top: 20px;
+    margin: auto;
   }
+
+.custom-buttons {
+    margin-top: 70px;
+    text-align: center;
+}
+
+img {
+  width: 20%;
+  height: 20%;
+}

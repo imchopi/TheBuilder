@@ -8,14 +8,13 @@ import { BuildService } from 'src/app/core/services/build-info/build.service';
   styleUrls: ['./build-info.page.scss'],
 })
 export class BuildInfoPage implements OnInit {
+
   builds: Build[] = [];
 
   constructor(public buildService: BuildService) {}
 
   ngOnInit() {
     this.buildService.getAll().subscribe((response) => {
-      console.log(response);
-      // Asigna directamente el array de Build a la propiedad builds
       this.builds = response
     });
   }

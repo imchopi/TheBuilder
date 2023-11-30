@@ -3,30 +3,30 @@ import { Observable } from 'rxjs';
 import { Preferences } from '@capacitor/preferences';
 
 export type JwtToken = string;
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({providedIn: 'root'})
 export class JwtService {
-  token: string = '';
 
-  constructor() {}
+  token: string = "";
+
+  constructor() {
+  }
 
   loadToken(): Observable<JwtToken> {
-    return new Observable<JwtToken>((observer) => {
-      Preferences.get({ key: 'jwtToken' })
-        .then((ret: any) => {
-          if (ret['value']) {
-            this.token = JSON.parse(ret.value);
-            if (this.token == '' || this.token == null) observer.next('');
-            else observer.next(this.token);
-            observer.complete();
+    return new Observable<JwtToken>(observer => {
+      Preferences.get({key:'jwtToken'}).then((ret:any) => {
+        if (ret['value']) {
+          this.token = JSON.parse(ret.value);
+          if(this.token == '' || this.token == null) {
+            observer.error('No token');
           } else {
-            observer.next('');
+            observer.next(this.token);
             observer.complete();
           }
-        })
-        .catch((error: any) => observer.next(error));
+        }
+        else {
+          observer.error('No token');
+        }
+      }).catch((error:any) => observer.next(error));
     });
   }
 
@@ -52,7 +52,6 @@ export class JwtService {
   destroyToken(): Observable<JwtToken> {
     //this.token = null;
     this.token = "";
-    localStorage.removeItem("CapacitorStorage.jwtToken")
     return this.saveToken(this.token);
   }
 }
