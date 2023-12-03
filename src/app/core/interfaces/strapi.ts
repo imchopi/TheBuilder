@@ -4,6 +4,32 @@ export interface StrapiUser {
   email: string;
 }
 
+export interface StrapiData<T>{
+  id:number,
+  attributes:T
+}
+
+export interface StrapiArrayResponse<T> {
+  data: StrapiData<T>[],
+  meta: {
+    pagination?: {
+      page: number,
+      pageSize: number,
+      pageCount: number,
+      total: number,
+    }
+  }
+}
+
+export interface StrapiExtendedUser{
+  id?:number,
+  name:string,
+  surname:string,
+  users:number,
+  nickname?:string,
+}
+
+
 export interface StrapiLoginPayload {
   identifier: string;
   password: string;
@@ -26,12 +52,11 @@ export interface StrapiRegisterResponse {
 }
 
 export interface StrapiExtendedUser {
-  data: {  
-    users: number;
-    name: string;
-    surname: string;
-    build_info?: number;
-  }
+  id?:number,
+  name:string,
+  surname:string,
+  users:number,
+  nickname?:string,
 }
 
 interface UserData {

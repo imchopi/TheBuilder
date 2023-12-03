@@ -15,7 +15,19 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <img [src]="build.attributes.class.data.attributes.class_img.data.attributes.url" alt="Class Image">
+      <div>
+        <img [src]="build.attributes.class.data.attributes.class_img.data.attributes.url" alt="Class Image">
+      </div>
+      <div *ngFor="let item of build.attributes.items.data">
+        <div>{{item.attributes.type_id.data.attributes.type_name}}</div>
+        <div>{{item.attributes.quality_id.data.attributes.quality_name}}</div>
+        <div>{{item.attributes.item_name}}</div>
+      </div>
     </ion-card-content>
   </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" routerLink="/build-form">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

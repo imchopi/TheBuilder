@@ -4,8 +4,8 @@
       <ion-menu-button color="primary"></ion-menu-button>
     </ion-buttons>
       <ion-label slot="end">
-        <p class="nickname">
-          {{ (user$ | async)?.name }}
+        <p class="nickname" *ngIf="user$ | async as user">
+          {{ user.nickname }}
         </p>
       </ion-label>
     <ion-buttons slot="end">

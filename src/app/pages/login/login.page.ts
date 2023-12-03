@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { UserRegisterInfo } from 'src/app/core/interfaces/user-register-info';
@@ -10,9 +10,11 @@ import { UserRegisterInfo } from 'src/app/core/interfaces/user-register-info';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor(private auth: AuthService, private router: Router) {}
-
-  ngOnInit() {}
+  private redirectUrl:string = ""
+  constructor(private auth: AuthService, private router: Router, private route:ActivatedRoute) {}
+  ngOnInit() {
+    this.redirectUrl = this.route.snapshot.queryParamMap.get('redirectUrl')??"/home";
+  }
 
   login(credentials: UserCredentials) {
     this.auth.login(credentials).subscribe({

@@ -2,9 +2,6 @@ export interface Build {
   id: number;
   attributes: {
     build_name: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
     items: {
       data: Item[];
     };
@@ -19,17 +16,11 @@ export interface Item {
   attributes: {
     item_name: string;
     item_detail: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
     type_id: {
       data: {
         id: number;
         attributes: {
           type_name: string;
-          createdAt: string;
-          updatedAt: string;
-          publishedAt: string;
         };
       };
     };
@@ -38,22 +29,31 @@ export interface Item {
         id: number;
         attributes: {
           quality_name: string;
-          createdAt: string;
-          updatedAt: string;
-          publishedAt: string;
         };
       };
     };
   };
+}
+export interface Types {
+  id: number;
+  attributes: {
+    type_name: string;
+    items: number;
+  }
+}
+
+export interface Qualities {
+  id: number;
+  attributes: {
+    quality_name: string;
+    items: number;
+  }
 }
 
 export interface Class {
   id: number;
   attributes: {
     name: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
     class_img: {
       data: Image;
     };

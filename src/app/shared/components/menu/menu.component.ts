@@ -12,7 +12,6 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-
   @Input() nickname: User | string = 'Chopito';
   @Input() languages: string[] = ['es', 'en'];
   @Input() languageSelected: string = 'es';
@@ -20,7 +19,7 @@ export class MenuComponent implements OnInit {
   currentPage: string = 'login';
 
   private _user = new BehaviorSubject<User | null>(null);
-  public user$ = this._user.asObservable()
+  public user$ = this._user.asObservable();
 
   constructor(
     private _menu: MenuController,
@@ -31,20 +30,16 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this._auth.isLogged$.subscribe((logged) => {
       if (logged) {
+        this._auth.me().subscribe((user) => {
+          this._user.next(user)
+        })
         this.currentPage = 'home';
         this._router.navigate(['/home']);
         this._menu.close();
       }
     });
-    this._auth.me().subscribe({
-      next: (user) => {
-        this._user.next(user);
-      },
-      error: (err) => {
-        console.error('Error componente:', err);
-      },
-    });
-    this._lang.use('es')
+
+    this._lang.use('es');
   }
 
   navigateToPage(page: string) {
@@ -52,41 +47,40 @@ export class MenuComponent implements OnInit {
     this._router.navigate([page]);
     this._menu.close();
   }
-  
+
   about() {
     this.navigateToPage('about');
   }
-  
+
   home() {
     this.navigateToPage('home');
   }
-  
+
   build() {
     this.navigateToPage('build-info');
   }
-  
+
   item() {
     this.navigateToPage('item');
   }
-  
+
   login() {
     this.navigateToPage('login');
   }
-  
+
   signUp() {
     this.navigateToPage('signup');
   }
-  
 
   logout() {
-    this._auth.logout();
-    this.currentPage = 'login';
-    this._router.navigate(['login']);
-    this._menu.close();
+    this._auth.logout().subscribe(async (_) => {
+      await this._router.navigate(['/login']);
+      this._menu.close();
+    });
   }
 
   setLanguage(lang: string) {
     this.languageSelected = lang;
-    this._lang.use(lang)
+    this._lang.use(lang);
   }
 }

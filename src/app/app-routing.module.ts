@@ -39,6 +39,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'build-form',
+    loadChildren: () => import('./pages/build-form/build-form.module').then( m => m.BuildFormPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

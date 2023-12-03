@@ -9,16 +9,6 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private _auth: AuthService, private _router: Router) {
-    this._auth.isLogged$.subscribe((logged) => {
-      console.log('llamadas de logged');
-      if (logged) {
-        console.log(logged);
-        this._router.navigate(['/home']);
-      } else {
-        console.log(logged);
-        this._router.navigate(['/login']);
-      }
-    });
+  constructor() {
   }
 }

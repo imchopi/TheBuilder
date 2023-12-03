@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="custom-form">
+
+      <ion-card-header>
+        <ion-card-title>
+          New Build
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <app-build-form-add (onRegister)="onRegister($event)"></app-build-form-add>
+        <div class="ion-text-end">
+          <ion-button fill="clear" style="text-transform: none;" (click)="navigateBuild()">Go to Build</ion-button>
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+</ion-content>

@@ -10,13 +10,15 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from '../core/services/translate/custom-translate.service';
 import { BuildInfoComponent } from './components/build-info/build.component';
+import { BuildFormAddComponent } from './components/build-form/build-form-add.component';
 
 @NgModule({
   declarations: [
+    BuildFormAddComponent,
     BuildInfoComponent,
     MenuComponent,
     LoginFormComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -26,13 +28,15 @@ import { BuildInfoComponent } from './components/build-info/build.component';
     RouterModule,
     TranslateModule.forChild({
       loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [HttpClient]
-      }
-      }),
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [
+    BuildFormAddComponent,
+    ReactiveFormsModule,
     BuildInfoComponent,
     MenuComponent,
     LoginFormComponent,
