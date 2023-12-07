@@ -15,6 +15,13 @@ export interface BuildPayload {
   build_name: string,
   items: number
   class: number
+  extended_user: number | undefined
+}
+
+export interface ItemPayload {
+  item_name: string,
+  quality_id: number
+  type_id: number
 }
 
 export interface Item {

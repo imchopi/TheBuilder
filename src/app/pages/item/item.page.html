@@ -1,9 +1,32 @@
 <ion-content [fullscreen]="true">
-  <div id="container">
-    <div class="flex-button">
-      <ion-button [routerLink]="'/build-info'">Builds</ion-button>
-      <ion-button [routerLink]="'/item'">Items</ion-button>
-      <ion-button [routerLink]="'/about'">About</ion-button>
+  <ion-header>
+    <div class="custom-buttons">
+      <ion-buttons slot="end">
+        <ion-button color="primary">Add</ion-button>
+        <ion-button color="secondary">Update</ion-button>
+        <ion-button color="danger">Delete</ion-button>
+      </ion-buttons>
     </div>
-  </div>
+  </ion-header>
+  <ion-card *ngFor="let item of items">
+    <ion-card-header>
+      <ion-button color="secondary" [routerLink]="['/','item', 'update', item.id]">Update</ion-button>
+      <ion-button color="danger" (click)="deleteItem(item.id)">Delete</ion-button>
+      <ion-card-title>
+        ITEMS: {{item.attributes.item_name}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <div>{{item.attributes.type_id.data.attributes.type_name}}</div>
+        <div>{{item.attributes.quality_id.data.attributes.quality_name}}</div>
+        <div>{{item.attributes.item_name}}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" routerLink="/item-form">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

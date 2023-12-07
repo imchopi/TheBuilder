@@ -10,6 +10,8 @@ import {
 import { BuildService } from 'src/app/core/services/build-info/build.service';
 import { BuildFormAddComponent } from 'src/app/shared/components/build-form/build-form-add.component';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { User } from 'src/app/core/interfaces/user';
 
 @Component({
   selector: 'app-build-info',
@@ -18,20 +20,26 @@ import { AlertController } from '@ionic/angular';
 })
 export class BuildInfoPage implements OnInit {
   constructor(
-    private modal: ModalController,
     private buildService: BuildService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private auth: AuthService
   ) {}
 
+  user: User | null = null
   builds: Build[] = [];
   classes: Class[] | null = null;
-  types: Types | null = null;
-  qualities: Qualities | null = null;
+  types: Types[] | null = null;
+  qualities: Qualities[] | null = null;
 
   ngOnInit() {
-    this.buildService.getAll().subscribe((response) => {
-      this.builds = response;
-    });
+    this.auth.me().subscribe({
+      next: (_) => {
+        this.user = _
+        this.buildService.getAllBuildByUser(this?.user?.id).subscribe((response) => {
+          this.builds = response
+        })
+      }
+    })
     this.buildService.getClasses().subscribe((response) => {
       this.classes = response;
     });
@@ -45,20 +53,20 @@ export class BuildInfoPage implements OnInit {
 
   ionViewWillEnter() {
     console.log('Entrando');
-    this.buildService.getAll().subscribe((response) => {
-      this.builds = response;
-      console.log(this.builds);
-    });
-  }
-
-  updateBuild(id: number) {
-    console.log(id);
+    this.auth.me().subscribe({
+      next: (_) => {
+        this.user = _
+        this.buildService.getAllBuildByUser(this?.user?.id).subscribe((response) => {
+          this.builds = response
+        })
+      }
+    })
   }
 
   async deleteBuild(id: number) {
     const alertBuild = await this.alertController.create({
       header: 'Remove',
-      subHeader: 'Remove this post',
+      subHeader: 'Remove this build',
       message: 'Are you sure?',
       buttons: [
         {

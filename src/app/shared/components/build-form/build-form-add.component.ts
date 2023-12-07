@@ -9,6 +9,8 @@ import {
 } from 'src/app/core/interfaces/build';
 import { BuildService } from 'src/app/core/services/build-info/build.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/core/interfaces/user';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-build-form-add',
@@ -26,6 +28,7 @@ export class BuildFormAddComponent implements OnInit {
   selectedClasses: Class[] | null = null;
   selectedItems: Item[] | null = null;
   buildId: number | null = null
+  user: User | null = null
 
   @Input() set build(_build: Build | null) {
     if (_build) {
@@ -41,7 +44,8 @@ export class BuildFormAddComponent implements OnInit {
     private buildService: BuildService,
     private _modal: ModalController,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.form = this.formBuilder.group({
       buildname: ['', Validators.required],
@@ -51,6 +55,12 @@ export class BuildFormAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.me().subscribe({
+      next: (_) => {
+        this.user = _
+        this.buildService.getAllBuildByUser(this?.user?.id).subscribe()
+      }
+    })
     this.buildService.getClasses().subscribe((response) => {
       this.selectedClasses = response;
       console.log('Selected Classes:', this.selectedClasses);
@@ -85,6 +95,7 @@ export class BuildFormAddComponent implements OnInit {
         build_name: this.form.get('buildname')?.value,
         class: this.form.get('selectedClasses')?.value,
         items: this.form.get('selectedItems')?.value,
+        extended_user: this?.user?.id
       };
 
       this.onRegister.emit(buildData);
@@ -97,6 +108,7 @@ export class BuildFormAddComponent implements OnInit {
         build_name: this.form.get('buildname')?.value,
         class: this.form.get('selectedClasses')?.value,
         items: this.form.get('selectedItems')?.value,
+        extended_user: this?.user?.id
       };
   
       this.buildService.updateBuild(this.buildId, buildData).subscribe(

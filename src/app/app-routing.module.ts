@@ -49,6 +49,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/build-form/build-form.module').then( m => m.BuildFormPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'item-form',
+    loadChildren: () => import('./pages/item-form/item-form/item-form.module').then( m => m.ItemFormPageModule)
+  },
+  {
+    path: 'item/update/:itemId',
+    loadChildren: () => import('./pages/item-form/item-form/item-form.module').then( m => m.ItemFormPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

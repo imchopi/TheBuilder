@@ -17,6 +17,7 @@ import { BuildService } from 'src/app/core/services/build-info/build.service';
 
 export class BuildFormPage implements OnInit {
 
+
   constructor(
     private buildService: BuildService,
     private router: Router,

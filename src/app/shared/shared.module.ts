@@ -10,9 +10,11 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from '../core/services/translate/custom-translate.service';
 import { BuildFormAddComponent } from './components/build-form/build-form-add.component';
+import { ItemFormAddComponent } from './components/item-form/item-form/item-form-add.component';
 
 @NgModule({
   declarations: [
+    ItemFormAddComponent,
     BuildFormAddComponent,
     MenuComponent,
     LoginFormComponent,
@@ -33,6 +35,7 @@ import { BuildFormAddComponent } from './components/build-form/build-form-add.co
     }),
   ],
   exports: [
+    ItemFormAddComponent,
     BuildFormAddComponent,
     ReactiveFormsModule,
     MenuComponent,
