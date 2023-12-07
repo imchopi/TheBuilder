@@ -1,42 +1,36 @@
-<form *ngIf="form" [formGroup]="form" (ngSubmit)="onRegisterBuild()">
-  <ion-input
-    labelPlacement="stacked"
-    label="buildName"
-    formControlName="buildname"
-    type="text"
-  ></ion-input>
-
-  <ion-item>
-    <ion-label position="stacked">Class</ion-label>
-    <ion-select
-      formControlName="selectedClasses"
-      placeholder="Select a Class"
-      aria-label="Select a Class"
-    >
-      <ion-select-option *ngFor="let oneClass of selectedClasses">
-        {{ oneClass.attributes.name }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Items</ion-label>
-    <ion-select
-      formControlName="selectedItems"
-      placeholder="Select an Item"
-      aria-label="Select an Item"
-    >
-      <ion-select-option *ngFor="let item of selectedItems">
-        {{ item.attributes.item_name }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-button
-    style="text-transform: none"
-    [disabled]="!form.valid"
-    (click)="onRegisterBuild()"
-    type="submit"
-    >Save</ion-button
-  >
-</form>
+<ion-card class="custom-form">
+  <ion-card-header>
+    <ion-card-title>
+      {{mode ? 'Update' : 'Create'}}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form *ngIf="form" [formGroup]="form">
+      <ion-input labelPlacement="stacked" label="buildName" formControlName="buildname" type="text"></ion-input>
+      <ion-label position="stacked">
+        {{ mode ? "Update" : "New" }}
+      </ion-label>
+      <ion-item>
+        <ion-select formControlName="selectedClasses" placeholder="Select a Class" aria-label="Select a Class">
+          <ion-select-option *ngFor="let oneClass of selectedClasses" [value]="oneClass.id">
+            {{ oneClass.attributes.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-label position="stacked">
+        {{ mode ? "Edit Item" : "New Item" }}
+      </ion-label>
+      <ion-item>
+        <ion-select formControlName="selectedItems" placeholder="Select an Item" aria-label="Select an Item">
+          <ion-select-option *ngFor="let item of selectedItems" [value]="item.id">
+            {{ item.attributes.item_name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button style="text-transform: none" [disabled]="!form.valid" (click)="mode ? updateBuild() : onRegisterBuild()"
+        type="submit">
+        {{ mode ? "Update" : "Save" }}
+      </ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

@@ -2,7 +2,14 @@ import { Injectable, Type } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { BehaviorSubject, Observable, lastValueFrom, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Build, Class, Item, Qualities, Types } from '../../interfaces/build'; // Asegúrate de importar BuildInfo, no Build
+import {
+  Build,
+  BuildPayload,
+  Class,
+  Item,
+  Qualities,
+  Types,
+} from '../../interfaces/build'; // Asegúrate de importar BuildInfo, no Build
 import { JwtService } from '../jwt/jwt.service';
 
 @Injectable({
@@ -27,6 +34,15 @@ export class BuildService {
       )
       .pipe(map((response: any) => response.data));
   }
+
+  getBuildById(buildId: number): Observable<Build> {
+    return this.apiSvc
+      .get(
+        `/build-infos/${buildId}?populate=build,items,items.quality_id,items.type_id,class,class.class_img`
+      )
+      .pipe(map((response: any) => response.data));
+  }
+
   getItems(): Observable<Item[]> {
     return this.apiSvc
       .get('/items')
@@ -53,35 +69,15 @@ export class BuildService {
       .pipe(map((response: any) => response.data));
   }
 
-  addBuild(build: Build): Observable<Build> {
+  addBuild(build: BuildPayload): Observable<Build> {
+    console.log('Entro al add build' + build);
     return new Observable<Build>((obs) => {
-      const itemsData = build.attributes.items.data.map((item) => {
-        return {
-          id: item.id,
-          attributes: {
-            item_name: item.attributes.item_name,
-            item_detail: item.attributes.item_detail,
-            type_id: item.attributes.type_id.data.id,
-            quality_id: item.attributes.quality_id.data.id,
-          },
-        };
-      });
-  
-      const classData = {
-        id: build.attributes.class.data.id,
-        attributes: {
-          name: build.attributes.class.data.attributes.name,
-          class_img_url: build.attributes.class.data.attributes.class_img.data.attributes.url,
-        },
+      const _buildPayload: BuildPayload = {
+        build_name: build.build_name,
+        items: build.items,
+        class: build.class,
       };
-  
-      const _buildPayload = {
-        build_name: build.attributes.build_name,
-        items: itemsData,
-        class: classData,
-      };
-  
-      this.apiSvc.post('/build', { data: _buildPayload }).subscribe({
+      this.apiSvc.post('/build-infos', { data: _buildPayload }).subscribe({
         next: async (data: any) => {
           obs.next(data);
           obs.complete();
@@ -91,5 +87,30 @@ export class BuildService {
         },
       });
     });
+  }
+
+  updateBuild(buildId: number, build: BuildPayload): Observable<Build> {
+    return new Observable<Build>((obs) => {
+      const _buildPayload: BuildPayload = {
+        build_name: build.build_name,
+        items: build.items,
+        class: build.class,
+      };
+      this.apiSvc
+        .put(`/build-infos/${buildId}`, { data: _buildPayload })
+        .subscribe({
+          next: async (data: any) => {
+            obs.next(data);
+            obs.complete();
+          },
+          error: (err) => {
+            obs.error(err);
+          },
+        });
+    });
+  }
+
+  deleteBuild(id: number) {
+    return this.apiSvc.delete(`/build-infos/${id}`)
   }
 }

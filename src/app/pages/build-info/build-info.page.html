@@ -10,6 +10,8 @@
   </ion-header>
   <ion-card *ngFor="let build of builds">
     <ion-card-header>
+      <ion-button color="secondary" [routerLink]="['/','build', 'update', build.id]">Update</ion-button>
+      <ion-button color="danger" (click)="deleteBuild(build.id)">Delete</ion-button>
       <ion-card-title>
         BUILD: {{build.attributes.build_name}} - {{ build.attributes.class.data.attributes.name }}
       </ion-card-title>

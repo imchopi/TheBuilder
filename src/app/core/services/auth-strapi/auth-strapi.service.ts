@@ -86,8 +86,7 @@ export class AuthStrapiService extends AuthService {
             const user = await lastValueFrom(this.me());
             this._user.next(user);
             this._logged.next(true);
-            obs.next(user);
-            obs.complete();  
+  
           } catch (error) {
             obs.error(error);
           }

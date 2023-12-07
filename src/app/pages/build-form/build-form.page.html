@@ -1,20 +1,14 @@
 <ion-content [fullscreen]="true">
-  <div class="container">
-    <ion-card class="custom-form">
-
-      <ion-card-header>
-        <ion-card-title>
-          New Build
-        </ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4" offset-md="4">
         <app-build-form-add (onRegister)="onRegister($event)"></app-build-form-add>
-        <div class="ion-text-end">
-          <ion-button fill="clear" style="text-transform: none;" (click)="navigateBuild()">Go to Build</ion-button>
-        </div>
-      </ion-card-content>
-
-    </ion-card>
-  </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-header>
+  <ion-title>
+    Creating a new Build
+  </ion-title>
+</ion-header>

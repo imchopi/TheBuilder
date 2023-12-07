@@ -73,9 +73,8 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this._auth.logout().subscribe(async (_) => {
-      await this._router.navigate(['/login']);
-      this._menu.close();
+    this._auth.logout().subscribe((_) => {
+      this.navigateToPage('login');
     });
   }
 

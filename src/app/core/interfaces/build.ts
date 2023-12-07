@@ -11,6 +11,12 @@ export interface Build {
   };
 }
 
+export interface BuildPayload {
+  build_name: string,
+  items: number
+  class: number
+}
+
 export interface Item {
   id: number;
   attributes: {
