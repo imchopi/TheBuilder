@@ -27,15 +27,21 @@ export class BuildFormAddComponent implements OnInit {
   buildname: string | null = null;
   selectedClasses: Class[] | null = null;
   selectedItems: Item[] | null = null;
-  buildId: number | null = null
-  user: User | null = null
+  buildId: number | null = null;
+  user: User | null = null;
 
   @Input() set build(_build: Build | null) {
     if (_build) {
       this.form.controls['buildname'].setValue(_build.attributes.build_name);
-      this.form.controls['selectedClasses'].setValue(_build.attributes.class.data.id);
-      this.form.controls['selectedItems'].setValue(_build.attributes.items.data.map((item) => item.id));
-      console.log("Soy _build: " + _build.attributes.class.data.attributes.name); 
+      this.form.controls['selectedClasses'].setValue(
+        _build.attributes.class.data.id
+      );
+      this.form.controls['selectedItems'].setValue(
+        _build.attributes.items.data.map((item) => item.id)
+      );
+      console.log(
+        'Soy _build: ' + _build.attributes.class.data.attributes.name
+      );
     }
   }
 
@@ -57,10 +63,10 @@ export class BuildFormAddComponent implements OnInit {
   ngOnInit() {
     this.auth.me().subscribe({
       next: (_) => {
-        this.user = _
-        this.buildService.getAllBuildByUser(this?.user?.id).subscribe()
-      }
-    })
+        this.user = _;
+        this.buildService.getAllBuildByUser(this?.user?.id).subscribe();
+      },
+    });
     this.buildService.getClasses().subscribe((response) => {
       this.selectedClasses = response;
       console.log('Selected Classes:', this.selectedClasses);
@@ -73,12 +79,12 @@ export class BuildFormAddComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const buildIdParam = paramMap.get('buildId');
       if (buildIdParam) {
-        this.mode = true
-        this.buildId = Number(buildIdParam)
+        this.mode = true;
+        this.buildId = Number(buildIdParam);
         const buildId = Number(buildIdParam);
         this.buildService.getBuildById(buildId).subscribe(
           (res) => {
-            this.build = res
+            this.build = res;
             console.log(res);
           },
           (err) => {
@@ -95,7 +101,7 @@ export class BuildFormAddComponent implements OnInit {
         build_name: this.form.get('buildname')?.value,
         class: this.form.get('selectedClasses')?.value,
         items: this.form.get('selectedItems')?.value,
-        extended_user: this?.user?.id
+        extended_user: this?.user?.id,
       };
 
       this.onRegister.emit(buildData);
@@ -108,18 +114,16 @@ export class BuildFormAddComponent implements OnInit {
         build_name: this.form.get('buildname')?.value,
         class: this.form.get('selectedClasses')?.value,
         items: this.form.get('selectedItems')?.value,
-        extended_user: this?.user?.id
+        extended_user: this?.user?.id,
       };
-  
-      this.buildService.updateBuild(this.buildId, buildData).subscribe(
-        (res) => {
+      this.buildService.updateBuild(this.buildId, buildData).subscribe({
+        next: (data) => {
           this.router.navigate(['/build-info']);
         },
-        (err) => {
-          console.error('Error al actualizar el build:', err);
-        }
-      );
+        error: (err) => {
+          console.log('Hola que tal' + err);
+        },
+      });
     }
   }
-  
 }

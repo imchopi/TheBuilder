@@ -79,7 +79,6 @@ export class ItemFormAddComponent  implements OnInit {
         quality_id: this.form.get('selectedQualities')?.value,
         type_id: this.form.get('selectedTypes')?.value,
       };
-
       this.onRegister.emit(itemData);
     }
   }

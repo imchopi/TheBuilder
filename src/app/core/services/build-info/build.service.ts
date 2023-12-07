@@ -142,25 +142,22 @@ export class BuildService {
   }
 
   updateBuild(buildId: number, build: BuildPayload): Observable<Build> {
-    return new Observable<Build>((obs) => {
-      const _buildPayload: BuildPayload = {
-        build_name: build.build_name,
-        items: build.items,
-        class: build.class,
-        extended_user: build.extended_user,
-      };
-      this.apiSvc
-        .put(`/build-infos/${buildId}`, { data: _buildPayload })
-        .subscribe({
-          next: async (data: any) => {
-            obs.next(data);
-            obs.complete();
-          },
-          error: (err) => {
-            obs.error(err);
-          },
-        });
-    });
+    console.log('Entro al add build', build);
+    return this.apiSvc
+      .get(`/extender-users?filters[users]=${build.extended_user}`)
+      .pipe(
+        mergeMap((extenderData) => {
+          const extenderId = extenderData.data[0]?.id || null;
+          const _buildPayload: BuildPayload = {
+            build_name: build.build_name,
+            items: build.items,
+            class: build.class,
+            extended_user: extenderId,
+          };
+          console.log(_buildPayload);
+          return this.apiSvc.put(`/build-infos/${buildId}`, { data: _buildPayload });
+        })
+      );
   }
 
   updateItem(itemId: number, item: ItemPayload): Observable<Item> {
