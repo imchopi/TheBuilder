@@ -8,9 +8,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class AboutModalComponent {
   modalTitle = 'Información adicional';
-  modalContent = 'Aquí puedes agregar información adicional sobre la página "about".';
+  modalContent =
+    'Aquí puedes agregar información adicional sobre la página "about".';
 
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+  ) {}
 
   dismiss() {
     this.modalController.dismiss();

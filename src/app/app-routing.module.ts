@@ -51,12 +51,17 @@ const routes: Routes = [
   },
   {
     path: 'item-form',
-    loadChildren: () => import('./pages/item-form/item-form/item-form.module').then( m => m.ItemFormPageModule)
+    loadChildren: () => import('./pages/item-form/item-form/item-form.module').then( m => m.ItemFormPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'item/update/:itemId',
     loadChildren: () => import('./pages/item-form/item-form/item-form.module').then( m => m.ItemFormPageModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'loading',
+    loadChildren: () => import('./pages/loading/loading.module').then( m => m.LoadingPageModule)
   },
 ];
 

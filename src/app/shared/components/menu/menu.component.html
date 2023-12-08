@@ -24,13 +24,10 @@
         </ion-list>
       </ion-content>
     </ng-template>
-    </ion-popover>  
+  </ion-popover>  
 </ion-header>
 
 <ion-menu contentId="main-content" swipeGesture="false" type="overlay">
-  <p>
-    Current Page: {{ currentPage }}
-  </p>
   <div class="cont">
     <ion-button color="warning" class="button-menu" (click)="login()" *ngIf="currentPage === 'signup' || currentPage === 'login'" [ngClass]="{'active-button': currentPage === 'login'}" fill="clear">
       <p>
@@ -63,7 +60,7 @@
         Items
       </p>
     </ion-button>
-    <ion-button class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'item'}" fill="clear">
+    <ion-button class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'logout'}" fill="clear">
       <p>
         Logout
       </p>

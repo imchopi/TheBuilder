@@ -4,5 +4,9 @@
   <ion-input labelPlacement="stacked" label="Surname" formControlName="surname" type="text"></ion-input>
   <ion-input labelPlacement="stacked" label="Email" formControlName="email" type="email"></ion-input>
   <ion-input labelPlacement="stacked" label="Password" formControlName="password" type="password"></ion-input>
+  <div *ngIf="form.get('password')?.hasError('passwordProto')">
+    Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter.
+  </div>
+  <ion-input labelPlacement="stacked" label="Confirm Password" formControlName="confirmPassword" type="password"></ion-input>
   <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onRegister()" type="submit">Sing up</ion-button>
 </form>

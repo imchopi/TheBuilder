@@ -31,11 +31,9 @@ export class MenuComponent implements OnInit {
     this._auth.isLogged$.subscribe((logged) => {
       if (logged) {
         this._auth.me().subscribe((user) => {
-          this._user.next(user)
-        })
-        this.currentPage = 'home';
-        this._router.navigate(['/home']);
-        this._menu.close();
+          this._user.next(user);
+        });
+        this.home()
       }
     });
 
@@ -75,6 +73,7 @@ export class MenuComponent implements OnInit {
   logout() {
     this._auth.logout().subscribe((_) => {
       this.navigateToPage('login');
+      this._user.next(null)
     });
   }
 

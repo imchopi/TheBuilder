@@ -1,14 +1,23 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-title>
-        About
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <!-- Agrega aquí la imagen y el nombre -->
-    <img src="ruta_de_la_imagen" alt="Descripción de la imagen">
-    <h2>Nombre</h2>
-
-    <ion-button (click)="openModal()">Ver más</ion-button>
-  </ion-content>
+<ion-content>
+    <div class="flex">
+        <ion-card class="card-about">
+          <div class="card-content">
+            <ion-card-header class="card-header">
+              <div class="avatar-img">
+                <img alt="Avatar image" src="../../../assets/img/avatar.jpeg" />
+              </div>
+            </ion-card-header>
+            <div>
+              <ion-card-title>Adrián Perogil Fernández</ion-card-title>
+              <ion-button
+                fill="outline"
+                color="danger"
+                (click)="openModal()"
+              >
+                Ver más
+              </ion-button>
+            </div>
+          </div>
+        </ion-card>
+    </div>
+</ion-content>

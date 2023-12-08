@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 
 @Injectable({
@@ -14,11 +14,13 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
+
   canActivate(): Observable<boolean | UrlTree> {
     return this.auth.isLogged$.pipe(
+      take(1), // Take only the first emission
       tap((logged) => {
         console.log('Me fui' + logged);
-        if (!logged) this.router.navigate(['/signup']);
+        if (!logged) this.router.navigate(['/loading']);
       })
     );
   }
