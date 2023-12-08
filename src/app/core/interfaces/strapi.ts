@@ -27,6 +27,7 @@ export interface StrapiExtendedUser{
   surname:string,
   users:number,
   nickname?:string,
+  picture?:string
 }
 
 

@@ -9,7 +9,7 @@ import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  @Input('email') set email(value: string) {this.form?.controls['email'].setValue(value)}
+  @Input('email') set email(value: string) {}
   @Output() login = new EventEmitter<UserCredentials>();
 
   form: FormGroup | null = null;

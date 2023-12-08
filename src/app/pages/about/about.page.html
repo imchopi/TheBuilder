@@ -1,9 +1,14 @@
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <div class="flex-button">
-      <ion-button [routerLink]="'/build-info'">Builds</ion-button>
-      <ion-button [routerLink]="'/item'">Items</ion-button>
-      <ion-button [routerLink]="'/about'">About</ion-button>
-    </div>
-  </div>
-</ion-content>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        About
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <!-- Agrega aquí la imagen y el nombre -->
+    <img src="ruta_de_la_imagen" alt="Descripción de la imagen">
+    <h2>Nombre</h2>
+
+    <ion-button (click)="openModal()">Ver más</ion-button>
+  </ion-content>

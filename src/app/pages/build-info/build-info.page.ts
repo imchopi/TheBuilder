@@ -74,7 +74,7 @@ export class BuildInfoPage implements OnInit {
           handler: () => {
             this.buildService.deleteBuild(id).subscribe(
               (res) => {
-                this.buildService.getAll().subscribe((response) => {
+                this.buildService.getAllBuildByUser(this.user?.id).subscribe((response) => {
                   this.builds = response;
                   console.log(this.builds);
                 });

@@ -167,10 +167,9 @@ export class BuildService {
         quality_id: item.quality_id,
         type_id: item.type_id,
       };
-      console.log('Hola, soy item payload: ' + _itemPayload);
-
       this.apiSvc.put(`/items/${itemId}`, { data: _itemPayload }).subscribe({
         next: async (data: any) => {
+          console.log("Soy el data de updateItem: " + data);
           obs.next(data);
           obs.complete();
         },

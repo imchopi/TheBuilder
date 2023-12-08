@@ -6,7 +6,7 @@
   </ion-card-header>
   <ion-card-content>
     <form *ngIf="form" [formGroup]="form">
-      <ion-input labelPlacement="stacked" label="buildName" formControlName="buildname" type="text"></ion-input>
+      <app-form-control formControlName="buildname"></app-form-control>
       <ion-label position="stacked">
         {{ mode ? "Update" : "New" }}
       </ion-label>
