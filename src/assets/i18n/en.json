@@ -1,12 +1,48 @@
 {
-    "main":{
-        "hello":"Hello"
-    },
     "login":{
         "signup": "Sign up",
         "user":"Username or Email",
         "password":"Password",
         "submit":"Login"
+    },
+    "register":{
+        "username": "Username",
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "password": "Password",
+        "confirm": "Confirm Password",
+        "signup" : "Sign up",
+        "login" : "Login"
+    },
+    "main":{
+        "home":"Home",
+        "build":"Builds",
+        "item":"Items",
+        "about":"About me",
+        "logout":"Logout"
+    },
+    "formBuild": {
+        "create":"Create a Build",
+        "name":"Build name",
+        "class":"Class",
+        "selectClass":"Select a Class",
+        "item":"Item",
+        "selectItem":"Select a Item",
+        "saveC":"Save",
+        "update":"Update a Build",
+        "saveU":"Update"
+    },
+    "formItem": {
+        "create":"Create a Item",
+        "name":"Item name",
+        "class":"Type",
+        "selectClass":"Select a type",
+        "item":"Quality",
+        "selectItem":"Select a quality",
+        "saveC":"Save",
+        "update":"Update a Item",
+        "saveU":"Update"
     },
     "user-card":{
         "name":"Name"

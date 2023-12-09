@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { User } from './core/interfaces/user';
 import { ApiService } from './core/services/api/api.service';
+import { CustomTranslateService } from './core/services/translate/custom-translate.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent{
   
   constructor(
     private _auth: AuthService,
-    private router: Router
+    private router: Router,
+    public translate: CustomTranslateService,
     ) {
     this._auth.isLogged$.subscribe((logged) => {
       if (logged) {

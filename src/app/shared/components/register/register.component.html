@@ -1,12 +1,18 @@
 <form *ngIf="form" [formGroup]="form" (ngSubmit)="onRegister()">
-  <ion-input labelPlacement="stacked" label="Username" formControlName="username" type="text"></ion-input>
-  <ion-input labelPlacement="stacked" label="Name" formControlName="name" type="text"></ion-input>
-  <ion-input labelPlacement="stacked" label="Surname" formControlName="surname" type="text"></ion-input>
-  <ion-input labelPlacement="stacked" label="Email" formControlName="email" type="email"></ion-input>
-  <ion-input labelPlacement="stacked" label="Password" formControlName="password" type="password"></ion-input>
+<ion-label>{{ 'register.username' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="username" type="text"></ion-input>
+  <ion-label>{{ 'register.name' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="name" type="text"></ion-input>
+  <ion-label>{{ 'register.surname' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="surname" type="text"></ion-input>
+  <ion-label>{{ 'register.email' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="email" type="email"></ion-input>
+  <ion-label>{{ 'register.password' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="password" type="password"></ion-input>
   <div *ngIf="form.get('password')?.hasError('passwordProto')">
     Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter.
   </div>
-  <ion-input labelPlacement="stacked" label="Confirm Password" formControlName="confirmPassword" type="password"></ion-input>
-  <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onRegister()" type="submit">Sing up</ion-button>
+  <ion-label>{{ 'register.confirm' | translate }}</ion-label>
+  <ion-input labelPlacement="stacked" formControlName="confirmPassword" type="password"></ion-input>
+  <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onRegister()" type="submit">{{ 'register.signup' | translate}}</ion-button>
 </form>

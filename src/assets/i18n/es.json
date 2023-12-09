@@ -1,12 +1,48 @@
 {
-    "main":{
-        "hello":"Hola"
-    },
     "login":{
         "signup": "Registrarse",
         "user":"Nombre de usuario o correo",
         "password":"Contraseña",
         "submit":"Acceder"
+    },
+    "register":{
+        "username": "Nombre de usuario",
+        "name": "Nombre",
+        "surname": "Apellidos",
+        "email": "Correo",
+        "password": "Contraseña",
+        "confirm": "Confirmar contraseña",
+        "signup" : "Registrarse",
+        "login" : "Loguearse"
+    },
+    "main":{
+        "home":"Inicio",
+        "build":"Composiciones",
+        "item":"Objetos",
+        "about":"Sobre mi",
+        "logout":"Desconectarse"
+    },
+    "formBuild": {
+        "create":"Crea una composición",
+        "name":"Nombre de la composición",
+        "class":"Clase",
+        "selectClass":"Selecciona una clase",
+        "item":"Objeto",
+        "selectItem":"Selecciona un objeto",
+        "saveC":"Crear",
+        "update":"Actualiza la composición",
+        "saveU":"Actualizar"
+    },
+    "formItem": {
+        "create":"Crea un item",
+        "name":"Nombre del item",
+        "class":"Tipo",
+        "selectClass":"Selecciona una tipo",
+        "item":"Calidad",
+        "selectItem":"Selecciona la calidad",
+        "saveC":"Crear",
+        "update":"Actualiza el item",
+        "saveU":"Actualizar"
     },
     "user-card":{
         "name":"Nombre"

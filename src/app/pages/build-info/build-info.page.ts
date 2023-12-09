@@ -8,7 +8,7 @@ import {
   Types,
 } from 'src/app/core/interfaces/build';
 import { BuildService } from 'src/app/core/services/build-info/build.service';
-import { BuildFormAddComponent } from 'src/app/shared/components/about-modal/build-form/build-form-add.component';
+import { BuildFormAddComponent } from 'src/app/shared/components/build-form/build-form-add.component';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/interfaces/user';

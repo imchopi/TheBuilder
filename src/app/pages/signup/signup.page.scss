@@ -1,84 +1,47 @@
-/* Estilos comunes para el contenedor y la tarjeta */
+/* Estilo para el contenedor */
+
 .container {
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .custom-form {
-    max-width: 400px;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin: auto;
-  }
-  
-  /* Estilos comunes para el encabezado */
-  .custom-form ion-card-header {
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-  }
-  
-  /* Estilos comunes para el logotipo y el texto del encabezado */
-  .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-  }
-  
-  .logo ion-thumbnail {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .logo ion-text {
-    font-size: 1.5em;
-    margin-top: 8px;
-  }
-  
-  /* Estilos comunes para el contenido de la tarjeta */
-  .custom-form ion-card-content {
-    padding: 16px;
-  }
-  
-  /* Estilos para el formulario interno (app-login-form y app-register) */
-  app-login-form,
-  app-register {
-    /* Agrega estilos específicos para tus formularios aquí */
-  }
-  
-  /* Estilos comunes para el botón de navegación */
-  .ion-text-end ion-button {
-    fill: clear;
-    text-transform: none;
-  }
-  
-  /* Estilos para la columna derecha con la imagen */
-  .image-column {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #3498db;
-  }
-  
-  /* Estilos para la imagen */
-  .image-column img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  
-  /* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .container {
-      grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas más pequeñas */
-    }
-    
-    .custom-form {
-      max-width: none; /* Elimina el ancho máximo para ocupar todo el ancho en pantallas más pequeñas */
-    }
-  }
-  
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Estilo para la tarjeta */
+ion-card.custom-form {
+  width: 500px; /* Fondo oscuro para la tarjeta */
+  color: #fff; /* Texto blanco en la tarjeta */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el encabezado de la tarjeta */
+ion-card-header {
+  background-color: #350505; /* Rojo oscuro para el encabezado de la tarjeta */
+  border-radius: 10px 10px 0 0;
+}
+
+/* Estilo para el contenido de la tarjeta */
+ion-card-content {
+  padding: 15px;
+}
+
+/* Estilo para los botones */
+ion-button {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 15px;
+  --background: #570b0bde; /* Fondo rojo oscuro */
+  --color: #fff; /* Texto blanco */
+}
+
+/* Estilo para el botón deshabilitado */
+ion-button[disabled] {
+  --background: #b300003f; /* Fondo rojo un poco más claro para el botón deshabilitado */
+}
+
+/* Hover en el botón */
+ion-button:hover {
+  --background: #660000; /* Un tono más oscuro al pasar el ratón sobre el botón */
+}

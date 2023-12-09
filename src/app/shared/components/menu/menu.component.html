@@ -41,28 +41,28 @@
     </ion-button>
     <ion-button color="danger" class="button-menu" (click)="home()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'home'}" fill="clear">
       <p>
-        Home
+        {{ 'main.home' | translate }}
       </p>
     </ion-button>
     <ion-button color="danger" class="button-menu" (click)="build()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'build'}" fill="clear">
       <p>
-        Builds
+        {{ 'main.build' | translate }}
       </p>
     </ion-button>
     <ion-button color="danger" class="button-menu" (click)="item()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'item'}" fill="clear">
       <p>
-        Items
+        {{ 'main.item' | translate }}
       </p>
     </ion-button>
     <ion-button color="danger"
     class="button-menu" (click)="about()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'about'}"  fill="clear">
       <p>
-        About
+        {{ 'main.about' | translate }}
       </p>
     </ion-button>
     <ion-button color="danger" class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'logout'}" fill="clear">
       <p>
-        Logout
+        {{ 'main.logout' | translate }}
       </p>
     </ion-button>
   </div>
