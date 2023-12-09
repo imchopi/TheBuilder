@@ -1,13 +1,13 @@
 <ion-card class="custom-form">
   <ion-card-header>
     <ion-card-title>
-      {{ mode ? "Update item" : "Create item" }}
+      {{mode ? ('formItem.update' | translate) : ('formItem.create' | translate)}}
     </ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <form *ngIf="form" [formGroup]="form">
       <ion-label position="stacked">
-        {{ mode ? "Item name" : "Item name" }}
+        {{ mode ? ('formItem.name' | translate) : ('formItem.name' | translate)}}
       </ion-label>
       <app-form-control
         formControlName="itemname"
@@ -15,12 +15,12 @@
       ></app-form-control
       ><br /><br />
       <ion-label position="stacked">
-        {{ mode ? "Edit quality" : "New quality" }}
+        {{ mode ? ('formItem.item' | translate) : ('formItem.item' | translate)}}
       </ion-label>
       <ion-item>
         <ion-select
           formControlName="selectedQualities"
-          placeholder="Select a Quality"
+          placeholder="{{ 'formItem.selectItem' | translate }}"
           aria-label="Select a Quality"
         >
           <ion-select-option
@@ -32,12 +32,12 @@
         </ion-select>
       </ion-item>
       <ion-label position="stacked">
-        {{ mode ? "Edit type" : "New type" }}
+        {{ mode ? ('formItem.class' | translate) : ('formItem.class' | translate)}}
       </ion-label>
       <ion-item>
         <ion-select
           formControlName="selectedTypes"
-          placeholder="Select an Type"
+          placeholder="{{ 'formItem.selectClass' | translate }}"
           aria-label="Select an Type"
         >
           <ion-select-option
@@ -57,7 +57,7 @@
           (click)="mode ? updateItem() : onRegisterItem()"
           type="submit"
         >
-          {{ mode ? "Update" : "Save" }}
+        {{ mode ? ('formItem.saveU' | translate) : ('formItem.saveC' | translate)}}
         </ion-button>
       </ion-buttons>
     </form>
