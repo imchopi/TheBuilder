@@ -1,14 +1,17 @@
 <ion-card class="custom-form">
   <ion-card-header>
     <ion-card-title>
-      {{mode ? 'Update' : 'Create'}}
+      {{mode ? 'Update build' : 'Create build'}}
     </ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <form *ngIf="form" [formGroup]="form">
-      <app-form-control formControlName="buildname"></app-form-control>
       <ion-label position="stacked">
-        {{ mode ? "Update" : "New" }}
+        {{ mode ? "Build name" : "Build name" }}
+      </ion-label>
+      <app-form-control formControlName="buildname" (showMaxLengthErrorChange)="handleShowMaxLengthErrorChange($event)"></app-form-control><br><br>
+      <ion-label position="stacked">
+        {{ mode ? "Edit Class" : "New Class" }}
       </ion-label>
       <ion-item>
         <ion-select formControlName="selectedClasses" placeholder="Select a Class" aria-label="Select a Class">
@@ -27,10 +30,18 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-button style="text-transform: none" [disabled]="!form.valid" (click)="mode ? updateBuild() : onRegisterBuild()"
-        type="submit">
-        {{ mode ? "Update" : "Save" }}
-      </ion-button>
+      <ion-buttons>
+        <ion-back-button slot="start" defaultHref="/build-info"></ion-back-button>
+        <ion-button
+          fill="clear"
+          style="text-transform: none; margin-left: auto;"
+          [disabled]="!form.valid || showMaxLengthError"
+          (click)="mode ? updateBuild() : onRegisterBuild()"
+          type="submit"
+        >
+          {{ mode ? "Update" : "Save" }}
+        </ion-button>
+      </ion-buttons>
     </form>
   </ion-card-content>
 </ion-card>

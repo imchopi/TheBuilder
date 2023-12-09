@@ -33,6 +33,7 @@ export class ItemFormAddComponent implements OnInit {
   selectedQualities: Qualities[] | null = null;
   selectedTypes: Types[] | null = null;
   itemId: number | null = null;
+  showMaxLengthError: boolean = false;
 
   @Input() set item(_item: Item | null) {
     if (_item) {
@@ -115,5 +116,9 @@ export class ItemFormAddComponent implements OnInit {
         }
       );
     }
+  }
+
+  handleShowMaxLengthErrorChange(showMaxLengthError: boolean) {
+    this.showMaxLengthError = showMaxLengthError;
   }
 }

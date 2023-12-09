@@ -12,10 +12,12 @@ import { createTranslateLoader } from '../core/services/translate/custom-transla
 import { BuildFormAddComponent } from './components/build-form/build-form-add.component';
 import { ItemFormAddComponent } from './components/item-form/item-form/item-form-add.component';
 import { FormControlComponent } from './components/form-control/form-control.component';
-import { AboutModalComponent } from './components/about-modal/about-modal.component'
+import { AboutModalComponent } from './components/about-modal/about-modal.component';
+import { ClickDirective } from './directives/click.directive';
 
 @NgModule({
   declarations: [
+    ClickDirective,
     AboutModalComponent,
     FormControlComponent,
     ItemFormAddComponent,
@@ -39,6 +41,7 @@ import { AboutModalComponent } from './components/about-modal/about-modal.compon
     }),
   ],
   exports: [
+    ClickDirective,
     AboutModalComponent,
     FormControlComponent,
     ItemFormAddComponent,

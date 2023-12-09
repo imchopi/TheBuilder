@@ -14,7 +14,8 @@ import { HttpClientWebProvider } from './core/services/http-client-web/http-clie
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslateLoader } from './core/services/translate/custom-translate.service';
 import { SharedModule } from './shared/shared.module';
-
+import { ClickDirective } from './shared/directives/click.directive';
+import { UppercasePipe } from './shared/pipes/Uppercase/uppercase.pipe';
 
 export function httpProviderFactory(http: HttpClient) {
   return new HttpClientWebProvider(http);
@@ -25,7 +26,7 @@ export function AuthServiceProvider(jwt: JwtService, api: ApiService) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UppercasePipe],
   imports: [
     SharedModule,
     BrowserModule,
@@ -35,9 +36,9 @@ export function AuthServiceProvider(jwt: JwtService, api: ApiService) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
     }),
   ],
   providers: [

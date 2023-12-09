@@ -1,4 +1,4 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,8 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Valida
 })
 export class FormControlComponent implements ControlValueAccessor {
   value: string = '';
-
+  showMaxLengthError: boolean = false;
+  @Output() showMaxLengthErrorChange = new EventEmitter<boolean>();
   writeValue(value: any) {
     console.log("He entrado aquí en Write Value");
     if (value !== undefined) {
@@ -36,8 +37,14 @@ export class FormControlComponent implements ControlValueAccessor {
 
   onInputChange(event: Event) {
     const newValue = (event.target as HTMLInputElement).value;
-    this.value = newValue;
-    this.onChange(newValue);
-    this.onTouched();
+    if (newValue.length <= 20) {
+      this.value = newValue;
+      this.onChange(newValue);
+      this.onTouched();
+      this.showMaxLengthError = false; // Oculta el mensaje de error si se encuentra visible
+    } else {
+      this.showMaxLengthError = true; // Muestra el mensaje de error
+    }
+    this.showMaxLengthErrorChange.emit(this.showMaxLengthError)
   }
 }

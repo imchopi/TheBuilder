@@ -12,7 +12,7 @@ import { BuildFormAddComponent } from 'src/app/shared/components/build-form/buil
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/interfaces/user';
-
+import { AboutModalComponent } from 'src/app/shared/components/about-modal/about-modal.component';
 @Component({
   selector: 'app-build-info',
   templateUrl: './build-info.page.html',
@@ -22,7 +22,8 @@ export class BuildInfoPage implements OnInit {
   constructor(
     private buildService: BuildService,
     private alertController: AlertController,
-    private auth: AuthService
+    private auth: AuthService,
+    private modalController: ModalController
   ) {}
 
   user: User | null = null

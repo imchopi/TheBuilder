@@ -29,18 +29,14 @@ export class BuildFormAddComponent implements OnInit {
   selectedItems: Item[] | null = null;
   buildId: number | null = null;
   user: User | null = null;
+  showMaxLengthError: boolean = false;
 
   @Input() set build(_build: Build | null) {
     if (_build) {
       this.form.controls['buildname'].setValue(_build.attributes.build_name);
-      this.form.controls['selectedClasses'].setValue(
-        _build.attributes.class.data.id
-      );
+      this.form.controls['selectedClasses'].setValue(_build.attributes.class.data.id);
       this.form.controls['selectedItems'].setValue(
         _build.attributes.items.data.map((item) => item.id)
-      );
-      console.log(
-        'Soy _build: ' + _build.attributes.class.data.attributes.name
       );
     }
   }
@@ -125,5 +121,9 @@ export class BuildFormAddComponent implements OnInit {
         },
       });
     }
+  }
+
+  handleShowMaxLengthErrorChange(showMaxLengthError: boolean) {
+    this.showMaxLengthError = showMaxLengthError;
   }
 }

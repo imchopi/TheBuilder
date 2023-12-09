@@ -1,34 +1,39 @@
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <div class="custom-buttons">
-      <ion-buttons slot="end">
-        <ion-button color="primary">Add</ion-button>
-        <ion-button color="secondary">Update</ion-button>
-        <ion-button color="danger">Delete</ion-button>
-      </ion-buttons>
-    </div>
-  </ion-header>
-  <ion-card *ngFor="let build of builds">
-    <ion-card-header>
-      <ion-button color="secondary" [routerLink]="['/','build', 'update', build.id]">Update</ion-button>
-      <ion-button color="danger" (click)="deleteBuild(build.id)">Delete</ion-button>
-      <ion-card-title>
-        BUILD: {{build.attributes.build_name}} - {{ build.attributes.class.data.attributes.name }}
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div>
-        <img [src]="build.attributes.class.data.attributes.class_img.data.attributes.url" alt="Class Image">
+  <div class="flex">
+    <ion-card class="card-about" *ngFor="let build of builds">
+      <div class="card-content">
+        <ion-card-header class="card-header">
+          <div class="avatar-img">
+            <img
+              [src]="build.attributes.class.data.attributes.class_img.data.attributes.url"
+              alt="Class Image"
+            />
+          </div>
+        </ion-card-header>
       </div>
-      <div *ngFor="let item of build.attributes.items.data">
-        <div>{{item.attributes.type_id.data.attributes.type_name}}</div>
-        <div>{{item.attributes.quality_id.data.attributes.quality_name}}</div>
-        <div>{{item.attributes.item_name}}</div>
-      </div>
-    </ion-card-content>
-  </ion-card>
+      <ion-card-content>
+        <ion-card-title>{{build.attributes.build_name}}</ion-card-title>
+        <ion-card-title class="class"
+          >{{build.attributes.class.data.attributes.name | uppercase}}</ion-card-title
+        >
+        <div class="custom-item" *ngFor="let item of build.attributes.items.data">
+          <p class="custom-item-name" appyellow>{{item.attributes.item_name | uppercase}}</p>
+          <p>{{item.attributes.type_id.data.attributes.type_name}}</p>
+          <p>{{item.attributes.quality_id.data.attributes.quality_name}}</p>
+        </div>
+        <div class="button-container">
+          <ion-button fill="clear" color="secondary" [routerLink]="['/','build', 'update', build.id]">
+            <ion-icon name="create"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteBuild(build.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary" routerLink="/build-form">
+    <ion-fab-button color="danger" routerLink="/build-form">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

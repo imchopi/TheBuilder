@@ -17,10 +17,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean | UrlTree> {
     return this.auth.isLogged$.pipe(
-      take(1), // Take only the first emission
       tap((logged) => {
         console.log('Me fui' + logged);
-        if (!logged) this.router.navigate(['/loading']);
+        if (!logged) {
+          this.router.navigate(['/loading']);
+        }
       })
     );
   }

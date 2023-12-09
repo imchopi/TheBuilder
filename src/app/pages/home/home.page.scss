@@ -17,3 +17,21 @@
       margin: 5px;
     }
 }
+
+ion-content {
+  background-color: #1a1a1a; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+}
+
+ion-button {
+  background-color: #743333cb; /* Botón rojo oscuro */
+  color: #ffffff; /* Texto blanco */
+  margin: 10px;
+  width: 150px; /* Ancho del botón */
+}
+
+ion-button:hover {
+  background-color: #3f0303a2; /* Cambio de color al pasar el ratón */
+}
+
+/* Personaliza según tus necesidades */
