@@ -50,6 +50,10 @@
     "more": "Read more",
     "close": "Close"
   },
+  "other": {
+    "input1": "The value cannot exceed 20 characters.",
+    "input2": "Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter."
+  },
   "user-card": {
     "name": "Name"
   },

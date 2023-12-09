@@ -50,6 +50,10 @@
     "more": "Ver más",
     "close": "Cerrar"
   },
+  "other": {
+    "input1": "El valor no puede superar los 20 caracteres.",
+    "input2": "Requiere al menos 8 caracteres, al menos un número, una letra minúscula y una letra mayúscula."
+  },
   "user-card": {
     "name": "Nombre"
   },

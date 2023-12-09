@@ -10,7 +10,7 @@
   <ion-label>{{ 'register.password' | translate }}</ion-label>
   <ion-input labelPlacement="stacked" formControlName="password" type="password"></ion-input>
   <div *ngIf="form.get('password')?.hasError('passwordProto')">
-    Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter.
+    {{'other.input2' | translate}}
   </div>
   <ion-label>{{ 'register.confirm' | translate }}</ion-label>
   <ion-input labelPlacement="stacked" formControlName="confirmPassword" type="password"></ion-input>
