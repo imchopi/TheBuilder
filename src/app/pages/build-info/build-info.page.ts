@@ -8,7 +8,7 @@ import {
   Types,
 } from 'src/app/core/interfaces/build';
 import { BuildService } from 'src/app/core/services/build-info/build.service';
-import { BuildFormAddComponent } from 'src/app/shared/components/build-form/build-form-add.component';
+import { BuildFormAddComponent } from 'src/app/shared/components/about-modal/build-form/build-form-add.component';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/interfaces/user';
@@ -26,7 +26,7 @@ export class BuildInfoPage implements OnInit {
     private modalController: ModalController
   ) {}
 
-  user: User | null = null
+  user: User | null = null;
   builds: Build[] = [];
   classes: Class[] | null = null;
   types: Types[] | null = null;
@@ -35,12 +35,14 @@ export class BuildInfoPage implements OnInit {
   ngOnInit() {
     this.auth.me().subscribe({
       next: (_) => {
-        this.user = _
-        this.buildService.getAllBuildByUser(this?.user?.id).subscribe((response) => {
-          this.builds = response
-        })
-      }
-    })
+        this.user = _;
+        this.buildService
+          .getAllBuildByUser(this?.user?.id)
+          .subscribe((response) => {
+            this.builds = response;
+          });
+      },
+    });
     this.buildService.getClasses().subscribe((response) => {
       this.classes = response;
     });
@@ -56,12 +58,14 @@ export class BuildInfoPage implements OnInit {
     console.log('Entrando');
     this.auth.me().subscribe({
       next: (_) => {
-        this.user = _
-        this.buildService.getAllBuildByUser(this?.user?.id).subscribe((response) => {
-          this.builds = response
-        })
-      }
-    })
+        this.user = _;
+        this.buildService
+          .getAllBuildByUser(this?.user?.id)
+          .subscribe((response) => {
+            this.builds = response;
+          });
+      },
+    });
   }
 
   async deleteBuild(id: number) {
@@ -75,10 +79,12 @@ export class BuildInfoPage implements OnInit {
           handler: () => {
             this.buildService.deleteBuild(id).subscribe(
               (res) => {
-                this.buildService.getAllBuildByUser(this.user?.id).subscribe((response) => {
-                  this.builds = response;
-                  console.log(this.builds);
-                });
+                this.buildService
+                  .getAllBuildByUser(this.user?.id)
+                  .subscribe((response) => {
+                    this.builds = response;
+                    console.log(this.builds);
+                  });
               },
               (err) => console.log(err)
             );

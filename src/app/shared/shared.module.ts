@@ -9,7 +9,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { createTranslateLoader } from '../core/services/translate/custom-translate.service';
-import { BuildFormAddComponent } from './components/build-form/build-form-add.component';
+import { BuildFormAddComponent } from './components/about-modal/build-form/build-form-add.component';
 import { ItemFormAddComponent } from './components/item-form/item-form/item-form-add.component';
 import { FormControlComponent } from './components/form-control/form-control.component';
 import { AboutModalComponent } from './components/about-modal/about-modal.component';
