@@ -44,10 +44,7 @@ export class BuildService {
   }
 
   getAllBuildByUser(id: number | undefined): Observable<Build[]> {
-    console.log('Entro a getAllBuildByUser');
-
     return this.apiSvc.get(`/extender-users?filters[users]=${id}`).pipe(
-      tap((extenderData) => console.log('Extender User Data:', extenderData)),
       mergeMap((extenderData) => {
         const extenderId = extenderData.data[0].id;
         return this.apiSvc
@@ -100,7 +97,6 @@ export class BuildService {
   }
 
   addBuild(build: BuildPayload): Observable<Build> {
-    console.log('Entro al add build', build);
     return this.apiSvc
       .get(`/extender-users?filters[users]=${build.extended_user}`)
       .pipe(
@@ -112,23 +108,18 @@ export class BuildService {
             class: build.class,
             extended_user: extenderId,
           };
-          console.log(_buildPayload);
           return this.apiSvc.post('/build-infos', { data: _buildPayload });
         })
       );
   }
 
   addItem(item: ItemPayload): Observable<Item> {
-    console.log('Entro al add item' + item);
     return new Observable<Item>((obs) => {
       const _itemPayload: ItemPayload = {
         item_name: item.item_name,
         quality_id: item.quality_id,
         type_id: item.type_id,
       };
-      console.log('Hola, soy item payload: ' + _itemPayload.item_name);
-      console.log('Hola, soy item payload: ' + _itemPayload.quality_id);
-      console.log('Hola, soy item payload: ' + _itemPayload.type_id);
       this.apiSvc.post('/items', { data: _itemPayload }).subscribe({
         next: async (data: any) => {
           obs.next(data);
@@ -142,7 +133,6 @@ export class BuildService {
   }
 
   updateBuild(buildId: number, build: BuildPayload): Observable<Build> {
-    console.log('Entro al add build', build);
     return this.apiSvc
       .get(`/extender-users?filters[users]=${build.extended_user}`)
       .pipe(
@@ -154,7 +144,6 @@ export class BuildService {
             class: build.class,
             extended_user: extenderId,
           };
-          console.log(_buildPayload);
           return this.apiSvc.put(`/build-infos/${buildId}`, { data: _buildPayload });
         })
       );
@@ -169,7 +158,6 @@ export class BuildService {
       };
       this.apiSvc.put(`/items/${itemId}`, { data: _itemPayload }).subscribe({
         next: async (data: any) => {
-          console.log("Soy el data de updateItem: " + data);
           obs.next(data);
           obs.complete();
         },

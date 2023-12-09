@@ -77,7 +77,6 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     this.register.emit(this.form?.value);
-    console.log(this.form?.value);
     this.form?.reset();
   }
 }

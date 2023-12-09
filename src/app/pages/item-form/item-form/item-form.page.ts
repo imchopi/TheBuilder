@@ -23,9 +23,6 @@ export class ItemFormPage implements OnInit {
       next: (data) => {
         this.router.navigate(['/item']);
       },
-      error: (err) => {
-        console.log('Hola que tal' + err);
-      },
     });
   }
 }

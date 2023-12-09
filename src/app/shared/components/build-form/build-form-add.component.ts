@@ -65,12 +65,10 @@ export class BuildFormAddComponent implements OnInit {
     });
     this.buildService.getClasses().subscribe((response) => {
       this.selectedClasses = response;
-      console.log('Selected Classes:', this.selectedClasses);
     });
 
     this.buildService.getItems().subscribe((response) => {
       this.selectedItems = response;
-      console.log('Selected Items:', this.selectedItems);
     });
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const buildIdParam = paramMap.get('buildId');
@@ -81,11 +79,7 @@ export class BuildFormAddComponent implements OnInit {
         this.buildService.getBuildById(buildId).subscribe(
           (res) => {
             this.build = res;
-            console.log(res);
           },
-          (err) => {
-            console.log(err);
-          }
         );
       }
     });
@@ -115,9 +109,6 @@ export class BuildFormAddComponent implements OnInit {
       this.buildService.updateBuild(this.buildId, buildData).subscribe({
         next: (data) => {
           this.router.navigate(['/build-info']);
-        },
-        error: (err) => {
-          console.log('Hola que tal' + err);
         },
       });
     }

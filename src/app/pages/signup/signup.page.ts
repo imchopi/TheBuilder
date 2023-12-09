@@ -19,7 +19,6 @@ export class SignupPage implements OnInit {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }

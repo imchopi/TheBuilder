@@ -32,7 +32,6 @@ export class BuildFormPage implements OnInit {
         this.router.navigate(['/build-info']);
       },
       error: (err) => {
-        console.log('Hola que tal' + err);
       },
     });
   }

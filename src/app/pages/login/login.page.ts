@@ -21,9 +21,6 @@ export class LoginPage implements OnInit {
       next: (data) => {
         this.router.navigate(['/home'])
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 }

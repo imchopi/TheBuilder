@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Build, Class, Item, Qualities, Types } from 'src/app/core/interfaces/build';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  Build,
+  Class,
+  Item,
+  Qualities,
+  Types,
+} from 'src/app/core/interfaces/build';
 import { BuildService } from 'src/app/core/services/build-info/build.service';
 
 @Component({
@@ -11,7 +18,8 @@ import { BuildService } from 'src/app/core/services/build-info/build.service';
 export class ItemPage implements OnInit {
   constructor(
     private buildService: BuildService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private translate: TranslateService
   ) {}
 
   items: Item[] = [];
@@ -31,37 +39,30 @@ export class ItemPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('Entrando');
     this.buildService.getItems().subscribe((response) => {
       this.items = response;
-      console.log(this.items);
     });
   }
 
   async deleteItem(id: number) {
     const alertItem = await this.alertController.create({
-      header: 'Remove',
-      subHeader: 'Remove this item',
-      message: 'Are you sure?',
+      header: this.translate.instant('other.header'),
+      subHeader: this.translate.instant('other.subheader'),
+      message: this.translate.instant('other.message'),
       buttons: [
         {
-          text: 'Okay',
+          text: this.translate.instant('other.okay'),
           handler: () => {
-            this.buildService.deleteItem(id).subscribe(
-              (res) => {
-                this.buildService.getItems().subscribe((response) => {
-                  this.items = response;
-                  console.log(this.items);
-                });
-              },
-              (err) => console.log(err)
-            );
+            this.buildService.deleteItem(id).subscribe((res) => {
+              this.buildService.getItems().subscribe((response) => {
+                this.items = response;
+              });
+            });
           },
         },
-        'Cancel',
+        this.translate.instant('other.cancel')
       ],
     });
     await alertItem.present();
   }
 }
-

@@ -44,7 +44,6 @@ export class ItemFormAddComponent implements OnInit {
       this.form.controls['selectedTypes'].setValue(
         _item.attributes.type_id.data.id
       );
-      console.log('Hola soy selectedQualities: ' + this.selectedQualities);
     }
   }
 
@@ -78,11 +77,7 @@ export class ItemFormAddComponent implements OnInit {
         this.buildService.getItemById(itemId).subscribe(
           (res) => {
             this.item = res;
-            console.log(res);
           },
-          (err) => {
-            console.log(err);
-          }
         );
       }
     });

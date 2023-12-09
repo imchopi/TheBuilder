@@ -52,7 +52,12 @@
   },
   "other": {
     "input1": "The value cannot exceed 20 characters.",
-    "input2": "Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter."
+    "input2": "Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter.",
+    "header": "Removing",
+    "subheader": "Removing this item",
+    "message": "Are you sure?", 
+    "okay": "Si",
+    "cancel": "No"
   },
   "user-card": {
     "name": "Name"

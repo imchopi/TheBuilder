@@ -55,7 +55,6 @@ export class BuildInfoPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('Entrando');
     this.auth.me().subscribe({
       next: (_) => {
         this.user = _;
@@ -70,12 +69,12 @@ export class BuildInfoPage implements OnInit {
 
   async deleteBuild(id: number) {
     const alertBuild = await this.alertController.create({
-      header: 'Remove',
-      subHeader: 'Remove this build',
-      message: 'Are you sure?',
+      header: "{{'other.header' | translate}}",
+      subHeader: "{{'other.subheader' | translate}}",
+      message: "{{'other.message' | translate}}",
       buttons: [
         {
-          text: 'Okay',
+          text: "{{'other.okay' | translate}}",
           handler: () => {
             this.buildService.deleteBuild(id).subscribe(
               (res) => {
@@ -83,14 +82,12 @@ export class BuildInfoPage implements OnInit {
                   .getAllBuildByUser(this.user?.id)
                   .subscribe((response) => {
                     this.builds = response;
-                    console.log(this.builds);
                   });
               },
-              (err) => console.log(err)
             );
           },
         },
-        'Cancel',
+        "{{'other.cancel' | translate}}",
       ],
     });
     await alertBuild.present();

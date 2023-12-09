@@ -18,7 +18,6 @@ export class FormControlComponent implements ControlValueAccessor {
   showMaxLengthError: boolean = false;
   @Output() showMaxLengthErrorChange = new EventEmitter<boolean>();
   writeValue(value: any) {
-    console.log("He entrado aquí en Write Value");
     if (value !== undefined) {
       this.value = value;
     }

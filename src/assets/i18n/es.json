@@ -52,7 +52,12 @@
   },
   "other": {
     "input1": "El valor no puede superar los 20 caracteres.",
-    "input2": "Requiere al menos 8 caracteres, al menos un número, una letra minúscula y una letra mayúscula."
+    "input2": "Requiere al menos 8 caracteres, al menos un número, una letra minúscula y una letra mayúscula.",
+    "header": "Borrando",
+    "subheader": "Borrando el item",
+    "message": "¿Seguro que quieres borrarlo?",
+    "okay": "Si",
+    "cancel": "No"
   },
   "user-card": {
     "name": "Nombre"
