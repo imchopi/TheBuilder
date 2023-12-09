@@ -13,6 +13,7 @@ import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { User } from 'src/app/core/interfaces/user';
 import { AboutModalComponent } from 'src/app/shared/components/about-modal/about-modal.component';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-build-info',
   templateUrl: './build-info.page.html',
@@ -23,7 +24,8 @@ export class BuildInfoPage implements OnInit {
     private buildService: BuildService,
     private alertController: AlertController,
     private auth: AuthService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private translate: TranslateService
   ) {}
 
   user: User | null = null;
@@ -69,12 +71,12 @@ export class BuildInfoPage implements OnInit {
 
   async deleteBuild(id: number) {
     const alertBuild = await this.alertController.create({
-      header: "{{'other.header' | translate}}",
-      subHeader: "{{'other.subheader' | translate}}",
-      message: "{{'other.message' | translate}}",
+      header: this.translate.instant('other.header'),
+      subHeader: this.translate.instant('other.subheaderB'),
+      message: this.translate.instant('other.message'),
       buttons: [
         {
-          text: "{{'other.okay' | translate}}",
+          text: this.translate.instant('other.okay'),
           handler: () => {
             this.buildService.deleteBuild(id).subscribe(
               (res) => {
@@ -87,7 +89,7 @@ export class BuildInfoPage implements OnInit {
             );
           },
         },
-        "{{'other.cancel' | translate}}",
+        this.translate.instant('other.cancel')
       ],
     });
     await alertBuild.present();

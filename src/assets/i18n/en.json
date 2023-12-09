@@ -55,8 +55,9 @@
     "input2": "Requires at least 8 characters, at least one number, one lowercase letter and one uppercase letter.",
     "header": "Removing",
     "subheader": "Removing this item",
+    "subheaderB": "Removing this build",
     "message": "Are you sure?", 
-    "okay": "Si",
+    "okay": "Yes",
     "cancel": "No"
   },
   "user-card": {
