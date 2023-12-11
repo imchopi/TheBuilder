@@ -32,6 +32,16 @@
 
 Esta aplicación está preparada para ser desplegada en plataformas como Netlify o Render. Configura las variables de entorno necesarias y sigue los pasos de despliegue de la plataforma seleccionada.
 
+## Uso de la Aplicación
+
+Login
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/05ce3590-4deb-42c0-9094-58de7b9e3a71)
+
+Registro
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/e7f6da75-1619-4c40-b235-7964892e446d)
+
+
+
 ## Video
 
 https://drive.google.com/file/d/13FyBTJB0SdYg9T8SbbFKMp2-k4ch2Z-L/view
