@@ -31,3 +31,7 @@
 ## Despliegue
 
 Esta aplicación está preparada para ser desplegada en plataformas como Netlify o Render. Configura las variables de entorno necesarias y sigue los pasos de despliegue de la plataforma seleccionada.
+
+## Video
+
+https://drive.google.com/file/d/13FyBTJB0SdYg9T8SbbFKMp2-k4ch2Z-L/view
