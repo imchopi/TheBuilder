@@ -4,7 +4,7 @@
 
 ## Características
 
-- **Creación de Builds**: Diseña y personaliza builds para tu personaje con habilidades y atributos específicos.
+- **Creación de Builds**: Diseña y personaliza builds para tu personaje con tu clase e items específicos.
   
 - **Gestión de Ítems**: Añade, edita y elimina ítems para cada build, optimizando tu equipo para diferentes situaciones.
 
@@ -27,14 +27,6 @@
 1. Clona este repositorio: `git clone https://github.com/tu-usuario/diablo4-build-planner.git`
 2. Instala las dependencias: `npm install`
 3. Inicia la aplicación: `ionic serve`
-
-## Configuración del Backend (Strapi)
-
-La aplicación utiliza Strapi como CMS para gestionar los datos. Sigue estos pasos para configurar el backend:
-
-1. [Instala Strapi](https://strapi.io/documentation/developer-docs/latest/getting-started/installation.html).
-2. Configura la base de datos y define los modelos necesarios.
-3. Actualiza la URL del backend en el archivo `src/environments/environment.ts`.
 
 ## Despliegue
 
