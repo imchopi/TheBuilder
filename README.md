@@ -22,16 +22,6 @@
 
 - **Netlify & Render**: Plataformas de alojamiento y despliegue para garantizar la accesibilidad y disponibilidad de la aplicación.
 
-## Instalación
-
-1. Clona este repositorio: `git clone https://github.com/imchopi/TheBuilder`
-2. Instala las dependencias: `npm install`
-3. Inicia la aplicación: `ionic serve`
-
-## Despliegue
-
-Esta aplicación está preparada para ser desplegada en plataformas como Netlify o Render. Configura las variables de entorno necesarias y sigue los pasos de despliegue de la plataforma seleccionada.
-
 ## Uso de la Aplicación
 
 Login
