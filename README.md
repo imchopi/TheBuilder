@@ -22,7 +22,7 @@
 
 - **Netlify & Render**: Plataformas de alojamiento y despliegue para garantizar la accesibilidad y disponibilidad de la aplicación.
 
-- ## Enlaces
+## Enlaces
 VIDEO: https://drive.google.com/file/d/13FyBTJB0SdYg9T8SbbFKMp2-k4ch2Z-L/view
 
 WEB: https://adrian-chopito.netlify.app/
