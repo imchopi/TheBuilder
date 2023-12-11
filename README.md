@@ -25,11 +25,35 @@
 ## Uso de la Aplicación
 
 Login
+Podremos logarnos con el nombre de usuario o correo
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/05ce3590-4deb-42c0-9094-58de7b9e3a71)
 
 Registro
+Podemos registrarnos y una validación de contraseña en caso de introducir una contraseña que no se ajuste a la validación establecida
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/e7f6da75-1619-4c40-b235-7964892e446d)
 
+Pantalla principal y Menú
+Aparte, arriba a la derecha tenemos para cambiar el idioma de español a inglés
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/f3911fca-74a5-4d6c-a572-36daab71a3a4)
+
+Página BUILD
+Aquí podemos actualizar, borrar o crear una build con sus especificaciones
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/daa9d8fb-ca69-4cc9-96b4-48a33c216d1a)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/0483ed45-3309-4909-8405-056e339854bc)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/991c86ec-3f03-4532-bb53-7b64d692c719)
+
+
+Página ITEM
+Podremos actualizar, borrar o crear un item y sus especificaciones
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/5a04c7e7-3880-45a9-a0b8-dcd29503ee8e)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/228217f2-69b3-4c74-a141-0827a080a1e7)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/7417b058-2302-4b2f-814d-6e0f3d1af35b)
+
+
+Página ABOUT
+Un modal que nos dará información del desarrollador
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/440ee1d8-e6cf-4e12-a588-f54edcbd8ea5)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/1e53baa2-6dc9-4897-906b-a3452d067132)
 
 
 ## Video
