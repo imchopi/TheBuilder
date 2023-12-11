@@ -22,6 +22,10 @@
 
 - **Netlify & Render**: Plataformas de alojamiento y despliegue para garantizar la accesibilidad y disponibilidad de la aplicación.
 
+- ## Enlaces
+VIDEO: https://drive.google.com/file/d/13FyBTJB0SdYg9T8SbbFKMp2-k4ch2Z-L/view
+WEB: https://adrian-chopito.netlify.app/
+
 ## Uso de la Aplicación
 
 Login
@@ -54,8 +58,3 @@ Página ABOUT
 Un modal que nos dará información del desarrollador
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/440ee1d8-e6cf-4e12-a588-f54edcbd8ea5)
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/1e53baa2-6dc9-4897-906b-a3452d067132)
-
-
-## Video
-
-https://drive.google.com/file/d/13FyBTJB0SdYg9T8SbbFKMp2-k4ch2Z-L/view
