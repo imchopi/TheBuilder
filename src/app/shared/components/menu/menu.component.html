@@ -29,38 +29,38 @@
 
 <ion-menu contentId="main-content" swipeGesture="false" type="overlay">
   <div class="cont">
-    <ion-button color="danger" class="button-menu" (click)="login()" *ngIf="currentPage === 'signup' || currentPage === 'login'" [ngClass]="{'active-button': currentPage === 'login'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="login()" *ngIf="currentPage === 'signup' || currentPage === 'login'">
       <p>
         Login
       </p>
     </ion-button>
-    <ion-button color="danger" class="button-menu" (click)="signUp()" *ngIf="currentPage === 'signup' || currentPage === 'login'" [ngClass]="{'active-button': currentPage === 'signup'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="signUp()" *ngIf="currentPage === 'signup' || currentPage === 'login'" fill="clear">
       <p>
         {{'login.signup' | translate}}
       </p>
     </ion-button>
-    <ion-button color="danger" class="button-menu" (click)="home()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'home'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="home()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" fill="clear">
       <p>
         {{ 'main.home' | translate }}
       </p>
     </ion-button>
-    <ion-button color="danger" class="button-menu" (click)="build()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'build'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="build()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" fill="clear">
       <p>
         {{ 'main.build' | translate }}
       </p>
     </ion-button>
-    <ion-button color="danger" class="button-menu" (click)="item()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'item'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="item()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" fill="clear">
       <p>
         {{ 'main.item' | translate }}
       </p>
     </ion-button>
     <ion-button color="danger"
-    class="button-menu" (click)="about()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'about'}"  fill="clear">
+    class="button-menu" (click)="about()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" fill="clear">
       <p>
         {{ 'main.about' | translate }}
       </p>
     </ion-button>
-    <ion-button color="danger" class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" [ngClass]="{'active-button': currentPage === 'logout'}" fill="clear">
+    <ion-button color="danger" class="button-menu" (click)="logout()" *ngIf="!(currentPage === 'signup' || currentPage === 'login')" fill="clear">
       <p>
         {{ 'main.logout' | translate }}
       </p>
