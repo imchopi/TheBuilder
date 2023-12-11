@@ -1,6 +1,6 @@
 # Diablo 4 Build Planner
 
-¡Bienvenido a Diablo 4 Build Planner! Esta aplicación te permite crear y gestionar builds personalizadas para tu personaje en Diablo 4. Además, puedes asociar ítems específicos a cada build para planificar tu equipo ideal.
+¡Bienvenido mi nombre es Adrián y esta vez hemos recreado un creador de guild de Diablo 4 llamado "Build Planner"! Esta aplicación te permite crear y gestionar builds personalizadas para tu personaje en Diablo 4. Además, puedes asociar ítems específicos a cada build para planificar tu equipo ideal.
 
 ## Características
 
