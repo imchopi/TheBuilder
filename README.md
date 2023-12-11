@@ -34,14 +34,14 @@ Podemos registrarnos y una validación de contraseña en caso de introducir una 
 
 Pantalla principal y Menú
 Aparte, arriba a la derecha tenemos para cambiar el idioma de español a inglés
-![image](https://github.com/imchopi/TheBuilder/assets/92975232/f3911fca-74a5-4d6c-a572-36daab71a3a4)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/2412d198-d00c-4e6a-be36-0298e1b3fa56)
+![image](https://github.com/imchopi/TheBuilder/assets/92975232/a4a1aee1-94f3-411f-aba2-69e30d3213c4)
 
 Página BUILD
 Aquí podemos actualizar, borrar o crear una build con sus especificaciones
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/daa9d8fb-ca69-4cc9-96b4-48a33c216d1a)
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/0483ed45-3309-4909-8405-056e339854bc)
 ![image](https://github.com/imchopi/TheBuilder/assets/92975232/991c86ec-3f03-4532-bb53-7b64d692c719)
-
 
 Página ITEM
 Podremos actualizar, borrar o crear un item y sus especificaciones
