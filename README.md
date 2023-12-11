@@ -24,7 +24,7 @@
 
 ## Instalación
 
-1. Clona este repositorio: `git clone https://github.com/tu-usuario/diablo4-build-planner.git`
+1. Clona este repositorio: `git clone https://github.com/imchopi/TheBuilder`
 2. Instala las dependencias: `npm install`
 3. Inicia la aplicación: `ionic serve`
 
